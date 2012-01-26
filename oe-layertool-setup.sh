@@ -694,11 +694,11 @@ cat << EOM
 
 
 ################################################################################
-A setenv file has been created for you in the build directory.  Please verify
+A setenv file has been created for you in the conf directory.  Please verify
 The contents of this file.  Once you have verified the contents please source
 this file to configure your environment for building:
 
-    . build/setenv
+    . conf/setenv
 
 You can then start building using the bitbake command.  You will likely want
 to set the MACHINE option if you have not done so in your local.conf file.
@@ -716,7 +716,7 @@ Common targets are:
 EOM
 
     # Write the setenv file
-cat > $builddir/setenv << EOM
+cat > $confdir/setenv << EOM
 # Set OEBASE to where the build and source directories reside
 # NOTE: Do NOT place a trailing / on the end of OEBASE.
 export OEBASE=${oebase}

@@ -2,7 +2,8 @@
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 bitbake,git://git.openembedded.org/bitbake,master,HEAD,layers=
 oe-core,git://github.com/openembedded/oe-core.git,master,HEAD,layers=meta
-meta-texasinstruments,git://git.angstrom-distribution.org/meta-texasinstruments,master,HEAD,layers=
+meta-ti,git://arago-project.org/git/meta-ti.git,master,HEAD,layers=
+meta-arago,git://arago-project.org/git/meta-arago.git,master,HEAD,layers=
 meta-angstrom,git://git.angstrom-distribution.org/meta-angstrom,master,HEAD,layers=
 meta-openembedded,git://git.openembedded.org/meta-openembedded,master,HEAD,layers=meta-gpe:meta-oe:meta-gnome:meta-efl:meta-xfce
 OECORELAYERCONF=../sample-files/bblayers.conf.sample

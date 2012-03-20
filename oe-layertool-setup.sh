@@ -44,7 +44,7 @@ output="" # variable holding the output to write to outputfile
 oebase=`pwd` # variable to hold base directory
 sourcedir="$oebase/sources" # directory where repos will be cloned
 builddir="$oebase/build" # directory for builds
-confdir="$oebase/conf" # directory for build configuration files
+confdir="$builddir/conf" # directory for build configuration files
 dldir="$oebase/downloads" # setting for DL_DIR if -d option is used
 
 #####################

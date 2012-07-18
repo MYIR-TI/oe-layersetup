@@ -35,17 +35,21 @@
 # Global variables #
 ####################
 OECORELAYERCONF="" # sample configuration file used for bblayers.conf
+OECORELAYERCONFPATH="" # stores the path of the OECORELAYERCONFPATH variable
 OECORELOCALCONF="" # sample configuration file used for local.conf
+OECORELOCALCONFPATH="" # stores the path of the OECORELOCALCONFPATH variable
 outputfile="" # file to save output to if -o is used
 inputfile="" # file containing initial layers if -f is used
 interactive="n" # flag for interactive mode.  Default is n
 layers="" # variable holding the layers to add to bblayers.conf
 output="" # variable holding the output to write to outputfile
+scriptdir=`pwd` # directory of this calling script
 oebase=`pwd` # variable to hold base directory
-sourcedir="$oebase/sources" # directory where repos will be cloned
-builddir="$oebase/build" # directory for builds
-confdir="$builddir/conf" # directory for build configuration files
-dldir="$oebase/downloads" # setting for DL_DIR if -d option is used
+sourcedir="" # directory where repos will be cloned
+builddir="" # directory for builds
+confdir="" # directory for build configuration files
+dldir="" # setting for DL_DIR if -d option is used
+
 
 #####################
 # Parsing variables #
@@ -133,7 +137,7 @@ check_input() {
     fi
 
     # If directories do not exist then create them
-    for f in oebase sourcedir builddir confdir
+    for f in sourcedir builddir confdir
     do
         eval t="$"$f
         if [ ! -d $t ]
@@ -327,7 +331,6 @@ clone_repo() {
     fi
 
     git clone $uri $sourcedir/$name
-
     if [ "$?" != "0" ]
     then
         echo "ERROR: Could not clone repository at $uri"
@@ -337,14 +340,15 @@ clone_repo() {
 
 get_repo_branch() {
     found=0
+    branches=""
 
     while [ "$found" = "0" ]
     do
         cd $sourcedir/$name
 
         # Get a unique list of branches for the user to chose from
-        t_branches=`git branch -r`
-        t_branches=`echo $t_branches | sed 's/->//g'`
+        # Also delete the origin/HEAD line that the -r option returns
+        t_branches=`git branch -r | sed '/origin\/HEAD/d'`
         for b in $t_branches
         do
             branches="$branches"`echo $b | sed 's:.*origin/::g'`"\n"
@@ -547,6 +551,13 @@ get_oecorelayerconf() {
     # Check if the variable is already set.
     if [ "x$OECORELAYERCONF" != "x" ]
     then
+        OECORELAYERCONFPATH=$scriptdir/$OECORELAYERCONF
+
+        if [ ! -e $OECORELAYERCONFPATH ]
+        then
+            echo "ERROR: Could not find the specified layer conf file $OECORELAYERCONFPATH"
+        fi
+
         return
     fi
 
@@ -581,8 +592,10 @@ EOM
         if [ -e $input ]
         then
             done="y"
+            OECORELAYERCONF=$input
+            OECORELAYERCONFPATH=$sourcedir/$OECORELAYERCONF
         else
-            echo "ERROR: Could not find the specified file $input"
+            echo "ERROR: Could not find the specified layer conf file $input"
         fi
     done
 }
@@ -592,6 +605,14 @@ get_oecorelocalconf() {
     # Check if the variable is already set.
     if [ "x$OECORELOCALCONF" != "x" ]
     then
+        OECORELOCALCONFPATH=$scriptdir/$OECORELOCALCONF
+
+        if [ ! -e $OECORELOCALCONFPATH ]
+        then
+            echo "ERROR: Could not find the specified local conf file $OECORELOCALCONFPATH"
+            exit 1
+        fi
+
         return
     fi
 
@@ -626,8 +647,11 @@ EOM
         if [ -e $input ]
         then
             done="y"
+            OECORELOCALCONF=$input
+            OECORELOCALCONFPATH=$sourcedir/$OECORELOCALCONF
         else
-            echo "ERROR: Could not find the specified file $input"
+            echo "ERROR: Could not find the inputted sample file: $input"
+            exit 1
         fi
     done
 }
@@ -644,9 +668,8 @@ file for correctness.  To add additional metadata layers into your
 configuration please add entries to this file.
 
 EOM
-
     # First copy the template file
-    cp -f $sourcedir/$OECORELAYERCONF $confdir/bblayers.conf
+    cp -f $OECORELAYERCONFPATH $confdir/bblayers.conf
 
     # Now add the layers we have configured to the BBLAYERS variable
 cat >> $confdir/bblayers.conf << EOM
@@ -680,7 +703,7 @@ NOTE: You will probably want to change the default MACHINE setting in the
 EOM
 
     # First copy the template file
-    cp -f $sourcedir/$OECORELOCALCONF $confdir/local.conf
+    cp -f $OECORELOCALCONFPATH $confdir/local.conf
 
     # set the number of threads
     threads=`cat /proc/cpuinfo | grep -c processor`
@@ -778,6 +801,21 @@ do
         h ) usage;;
     esac
 done
+
+# create passed in directory if it doesn't exist
+mkdir -p $oebase
+
+# retrive the absolute path to the oebase directory incase
+# a relative path is passed in
+cd $oebase
+oebase=`pwd`
+cd -
+
+# Populate the following variables depending on the value of oebase
+sourcedir="$oebase/sources"
+builddir="$oebase/build"
+confdir="$builddir/conf"
+dldir="$oebase/downloads"
 
 check_input
 

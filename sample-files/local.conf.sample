@@ -151,4 +151,5 @@ TERMCMDRUN = "${XTERM_TERMCMDRUN}"
 # Don't generate the mirror tarball for SCM repos, the snapshot is enough
 BB_GENERATE_MIRROR_TARBALLS = "0"
 
+# Uncomment this to remove work directory after packaging to save disk space
 #INHERIT += "rm_work"

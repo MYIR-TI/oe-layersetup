@@ -1,0 +1,6 @@
+build
+conf
+sources
+bitbake.lock
+pseudodone
+*.dot

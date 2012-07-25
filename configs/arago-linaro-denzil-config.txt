@@ -6,5 +6,5 @@ meta-openembedded,git://git.openembedded.org/meta-openembedded,denzil,HEAD,layer
 meta-ti,git://arago-project.org/git/meta-ti.git,master,HEAD,layers=
 meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,master,HEAD,layers=
 oe-core,git://git.openembedded.org/openembedded-core,denzil,HEAD,layers=meta
-OECORELAYERCONF=../sample-files/bblayers.conf.sample
+OECORELAYERCONF=../sample-files/bblayers-denzil.conf.sample
 OECORELOCALCONF=../sample-files/local-arago-linaro-denzil.conf.sample

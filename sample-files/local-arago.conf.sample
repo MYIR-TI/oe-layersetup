@@ -153,7 +153,3 @@ BB_GENERATE_MIRROR_TARBALLS = "0"
 
 # Uncomment this to remove work directory after packaging to save disk space
 #INHERIT += "rm_work"
-
-# Select Linaro toolchain (gcc-4.6, built from sources from now)
-BBMASK = "meta-ti/recipes-misc|meta-linaro/recipes-lamp"
-GCCVERSION = "linaro-4.6%"

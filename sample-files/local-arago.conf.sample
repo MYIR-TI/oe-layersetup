@@ -123,7 +123,7 @@ PATCHRESOLVE = "noop"
 ENABLE_BINARY_LOCALE_GENERATION = "0"
 
 # What kind of images do we want?
-IMAGE_FSTYPES += "tar.bz2"
+IMAGE_FSTYPES += "tar.bz2 cpio"
 
 #
 # Parallelism Options

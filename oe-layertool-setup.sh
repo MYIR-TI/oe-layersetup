@@ -321,20 +321,19 @@ configure_repo() {
 }
 
 clone_repo() {
-  # check if the repo already exists.  if so then do nothing.  else clone it
+    # check if the repo already exists.  if so then fetch the latest updates,
+    # else clone it
     if [ -d $sourcedir/$name ]
     then
-        echo "ERROR: A repository with name \"$name\" already exists in $sourcedir."
-        echo "       This should not happen and indicates that something has been"
-        echo "       configured outside of this script."
-        exit 1
-    fi
-
-    git clone $uri $sourcedir/$name
-    if [ "$?" != "0" ]
-    then
-        echo "ERROR: Could not clone repository at $uri"
-        exit 1
+        cd $sourcedir/$name
+        git fetch --all
+    else
+        git clone $uri $sourcedir/$name
+        if [ "$?" != "0" ]
+        then
+            echo "ERROR: Could not clone repository at $uri"
+            exit 1
+        fi
     fi
 }
 
@@ -388,10 +387,23 @@ EOM
 
 checkout_branch() {
     cd $sourcedir/$name
-    if [ "x$branch" != "xmaster" ]
+
+    # Check if a local branch already exists to track the remote branch.
+    # If not then create a tracking branch and checkout the branch
+    # else just checkout the existing branch
+    git branch | grep $branch > /dev/null
+    if [ "$?" != "0" ]
     then
-        git checkout origin/$branch -b $branch
+        git checkout origin/$branch -b $branch --track
+    else
+        git checkout $branch
     fi
+
+    # Now that we are on the proper branch merge the remote branch changes if
+    # any.  In the case of a clean checkout this should be already up to date,
+    # but for an existing checkout this should be the changes that were
+    # fetched earlier.
+    git merge origin/$branch
 }
 
 checkout_commit() {
@@ -664,8 +676,12 @@ cat << EOM
 ################################################################################
 The bblayers.conf configuration file has been created for you with some
 default values.  Please verify the contents of your conf/bblayers.conf
-file for correctness.  To add additional metadata layers into your
-configuration please add entries to this file.
+file for correctness.
+
+NOTE: Any additional entries to this file will be lost if the $0
+      script is run again.  To add entries permanently to this file
+      please add them to the config file used and rerun the
+      $0 script.
 
 EOM
     # First copy the template file

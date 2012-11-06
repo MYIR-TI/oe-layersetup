@@ -272,12 +272,12 @@ configure_repo() {
 
     # Check if the repo with $name was already seen.  Use the , at the end
     # of the grep to avoid matching similar named repos.
-    temp=`echo -e $output | grep -e "^$name,"`
+    temp=`printf "$output\n" | grep -e "^$name,"`
 
     if [ "x$temp" != "x" ]
     then
         echo "This repository ($name) has already been configured with the following values:"
-        echo -e "\t$temp"
+        printf "\t$temp\n"
         echo "Skipping configuring duplicate repository"
         return 1
     fi
@@ -352,7 +352,7 @@ get_repo_branch() {
         do
             branches="$branches"`echo $b | sed 's:.*origin/::g'`"\n"
         done
-        branches=`echo -e $branches | sort | uniq`
+        branches=`printf "$branches\n" | sort | uniq`
 
 cat << EOM
 
@@ -427,12 +427,12 @@ EOM
     tags=`git tag`
     if [ "x$tags" = "x" ]
     then
-        echo -e "\tNo tags found"
+        printf "\tNo tags found\n"
     else
         # Format the tags nicely
         for t in $tags
         do
-            echo -e "\t* $t"
+            printf "\t* $t\n"
         done
     fi
 cat << EOM
@@ -515,7 +515,7 @@ EOM
 
     for l in $t_layers
     do
-        echo -e "\t"`echo $l | sed "s:${name}\/::"`
+        printf "\t"`echo $l | sed "s:${name}\/::"`"\n"
     done
 
 cat << EOM
@@ -591,7 +591,7 @@ EOM
 
         for f in $confs
         do
-            echo -e "\t$f"
+            printf "\t$f\n"
         done
 
 cat << EOM
@@ -646,7 +646,7 @@ EOM
 
         for f in $confs
         do
-            echo -e "\t$f"
+            printf "\t$f\n"
         done
 
 cat << EOM
@@ -695,7 +695,7 @@ BBLAYERS += " \\
 EOM
     for l in $layers
     do
-        echo -e "\t$l \\" >> $confdir/bblayers.conf
+        printf "\t$l \\%b" "\n" >> $confdir/bblayers.conf
     done
     echo "\"" >> $confdir/bblayers.conf
 }
@@ -891,7 +891,7 @@ then
     then
         mkdir -p $dir
     fi
-    echo -e $output > $outputfile
+    printf "$output\n" > $outputfile
     echo "Output file is $outputfile"
 fi
 

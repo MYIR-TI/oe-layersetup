@@ -122,8 +122,12 @@ PATCHRESOLVE = "noop"
 # Qemu 0.12.x is giving too much problems recently (2010.05), so disable it for users
 ENABLE_BINARY_LOCALE_GENERATION = "0"
 
-# What kind of images do we want?
-IMAGE_FSTYPES += "tar.bz2"
+# By default the machine configuration file sets the IMAGE_FSTYPES.  But if you
+# would like to add additional file system types you can uncomment the
+# following line and add the additional IMAGE_FSTYPES you want created
+# as part of the build flow.  Some common types are listed below and you
+# can remove the ones you do not want.
+# IMAGE_FSTYPES += "jffs2 cramfs ext2.gz ext3.gz squashfs ubi tar.gz tar.bz2 cpio"
 
 #
 # Parallelism Options
@@ -141,7 +145,9 @@ PARALLEL_MAKE = "-j 1"
 # For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would
 # be appropriate for example
 
-DISTRO   = "angstrom-2010.x"
+# Select a distribution from supported "arago", "angstrom-2010.x" or "poky"
+# By default, go with the "distroless" configuration, when not set
+#DISTRO   = "arago"
 
 # Set terminal types by default it expects gnome-terminal
 # but we chose xterm

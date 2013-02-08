@@ -1,10 +1,10 @@
 # This file takes repo entries in the format
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
-bitbake,git://git.openembedded.org/bitbake,master,1.15.2,layers=
+bitbake,git://git.openembedded.org/bitbake,master,1.17.0,layers=
 meta-arago,git://arago-project.org/git/projects/meta-arago-amsdk.git,amsdk-05.07.00.00-integration,HEAD,layers=meta-arago-distro:meta-arago-extras
-meta-openembedded,git://git.openembedded.org/meta-openembedded,denzil,HEAD,layers=toolchain-layer:meta-oe
+meta-openembedded,git://git.openembedded.org/meta-openembedded,danny,HEAD,layers=toolchain-layer:meta-oe
 meta-ti,git://arago-project.org/git/projects/meta-ti-amsdk.git,amsdk-05.07.00.00-integration,HEAD,layers=
-oe-core,git://git.openembedded.org/openembedded-core,denzil,HEAD,layers=meta
+oe-core,git://git.openembedded.org/openembedded-core,danny,HEAD,layers=meta
 OECORELAYERCONF=./sample-files/bblayers-denzil.conf.sample
 OECORELOCALCONF=./sample-files/local-arago.conf.sample

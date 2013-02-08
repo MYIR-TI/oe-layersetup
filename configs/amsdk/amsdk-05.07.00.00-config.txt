@@ -6,5 +6,5 @@ meta-arago,git://arago-project.org/git/projects/meta-arago-amsdk.git,amsdk-05.07
 meta-openembedded,git://git.openembedded.org/meta-openembedded,danny,HEAD,layers=toolchain-layer:meta-oe
 meta-ti,git://arago-project.org/git/projects/meta-ti-amsdk.git,amsdk-05.07.00.00-integration,HEAD,layers=
 oe-core,git://git.openembedded.org/openembedded-core,danny,HEAD,layers=meta
-OECORELAYERCONF=./sample-files/bblayers-denzil.conf.sample
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago.conf.sample

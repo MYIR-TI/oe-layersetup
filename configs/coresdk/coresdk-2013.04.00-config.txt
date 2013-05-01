@@ -2,7 +2,7 @@
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
 bitbake,git://git.openembedded.org/bitbake,master,1.17.0,layers=
-meta-arago,git://arago-project.org/git/meta-arago.git,master,46df7e3e2b3cd878e02294d07c0cb4ab62be969b,layers=meta-arago-distro:meta-arago-extras
+meta-arago,git://arago-project.org/git/meta-arago.git,master,6a74c17cf2152d59a2b7519cb5706bf678fe89bb,layers=meta-arago-distro:meta-arago-extras
 meta-openembedded,git://git.openembedded.org/meta-openembedded,danny,34e5537e67b655b8d2effbbecc207d88eea52b87,layers=toolchain-layer:meta-oe
 meta-ti,git://arago-project.org/git/meta-ti.git,danny,f2afcfee588adb594bc46a36d4e4443adb1be64f,layers=
 meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,danny,d0558fa4304592622423582f8b464e1c22cfe6f1,layers=

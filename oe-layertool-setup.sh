@@ -717,6 +717,13 @@ NOTE: You will probably want to change the default MACHINE setting in the
       local.conf file to the machine you are trying to build.
 
 EOM
+    
+    if [ -e $confdir/local.conf ]
+    then
+        echo "WARNING: Found existing $confdir/local.conf"
+        echo "Saving a backup to $confdir/local.conf.bak" 
+        cp -f $confdir/local.conf $confdir/local.conf.bak
+    fi
 
     # First copy the template file
     cp -f $OECORELOCALCONFPATH $confdir/local.conf

@@ -732,6 +732,22 @@ EOM
     threads=`cat /proc/cpuinfo | grep -c processor`
     sed -i "s/^PARALLEL_MAKE.*/PARALLEL_MAKE = \"-j ${threads}\"/" $confdir/local.conf
     sed -i "s/^BB_NUMBER_THREADS.*/BB_NUMBER_THREADS = \"${threads}\"/" $confdir/local.conf
+
+    # Find if old DL_DIR was set
+    if [ -e $confdir/local.conf.bak ]
+    then
+        old_dldir=`cat $confdir/local.conf.bak | grep -e "^DL_DIR =" | sed 's|DL_DIR = ||' | sed 's/"//g'`
+    else
+        old_dldir="$dldir"
+    fi
+
+    # If command line option was not set use the old dldir
+    if [ "x$dldir" == "x" ]
+    then
+        dldir=$old_dldir
+    fi
+
+    sed -i "s|^DL_DIR.*|DL_DIR = \"${dldir}\"|" $confdir/local.conf
 }
 
 
@@ -838,7 +854,6 @@ cd -
 sourcedir="$oebase/sources"
 builddir="$oebase/build"
 confdir="$builddir/conf"
-dldir="$oebase/downloads"
 
 check_input
 

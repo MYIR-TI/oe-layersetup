@@ -738,7 +738,7 @@ EOM
     then
         old_dldir=`cat $confdir/local.conf.bak | grep -e "^DL_DIR =" | sed 's|DL_DIR = ||' | sed 's/"//g'`
     else
-        old_dldir="$dldir"
+        old_dldir="$oebase/downloads"
     fi
 
     # If command line option was not set use the old dldir

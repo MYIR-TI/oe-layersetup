@@ -742,7 +742,7 @@ EOM
     fi
 
     # If command line option was not set use the old dldir
-    if [ "x$dldir" == "x" ]
+    if [ "x$dldir" = "x" ]
     then
         dldir=$old_dldir
     fi

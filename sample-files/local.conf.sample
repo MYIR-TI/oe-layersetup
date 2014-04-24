@@ -149,9 +149,6 @@ PARALLEL_MAKE = "-j 1"
 # By default, go with the "distroless" configuration, when not set
 #DISTRO   = "arago"
 
-# Mask misc recipes for distroless setup
-BBMASK = "meta-ti/recipes-misc"
-
 # Set terminal types by default it expects gnome-terminal
 # but we chose xterm
 TERMCMD = "${XTERM_TERMCMD}"

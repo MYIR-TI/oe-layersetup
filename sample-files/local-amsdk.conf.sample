@@ -160,3 +160,6 @@ BB_GENERATE_MIRROR_TARBALLS = "0"
 
 # Uncomment this to remove work directory after packaging to save disk space
 #INHERIT += "rm_work"
+
+# Keep one set of images by default
+RM_OLD_IMAGE = "1"

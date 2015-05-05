@@ -160,3 +160,10 @@ BB_GENERATE_MIRROR_TARBALLS = "0"
 
 # Keep one set of images by default
 RM_OLD_IMAGE = "1"
+
+# Enable local PR service for binary feeds
+PRSERV_HOST = "localhost:0"
+
+# It is recommended to activate "buildhistory" for testing the PR service
+INHERIT += "buildhistory"
+BUILDHISTORY_COMMIT = "1"

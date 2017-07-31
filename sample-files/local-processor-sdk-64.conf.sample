@@ -147,8 +147,8 @@ PARALLEL_MAKE = "-j 1"
 
 DISTRO   = "arago"
 
-# Set branding policy for AM-SDK
-ARAGO_BRAND = "processor-sdk"
+# Set branding policy for Processor SDK
+ARAGO_BRAND ?= "processor-sdk"
 
 # Set terminal types by default it expects gnome-terminal
 # but we chose xterm

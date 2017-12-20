@@ -2,7 +2,7 @@
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
 bitbake,git://git.openembedded.org/bitbake,1.32,887ea6d25cee5114365dfbf1130603599e13ee80,layers=
-meta-processor-sdk,git://arago-project.org/git/projects/meta-processor-sdk.git,morty-x11-experimental,25e37e074b3a5f43588b3979c84e8684efb49c85,layers=
+meta-processor-sdk,git://arago-project.org/git/projects/meta-processor-sdk.git,morty-x11-experimental,cb3ee0c165ef4e71e1aad16812652ca1371a9c80,layers=
 meta-arago,git://arago-project.org/git/meta-arago.git,morty,8f49ed67d0627a04ac72fd388fda7756273ba2d7,layers=meta-arago-distro:meta-arago-extras
 meta-browser,git://github.com/OSSystems/meta-browser.git,master,08576b03af624b65ad949c410d84c11c7d1f2e39,layers=
 meta-openamp,git://github.com/OpenAMP/meta-openamp.git,morty,8a214032bfb7e8124bc1485c70c69f7d60abb819,layers=

@@ -730,7 +730,7 @@ EOM
 
     # set the number of threads
     threads=`cat /proc/cpuinfo | grep -c processor`
-    tnum=`echo "(${threads}*.75+.5)/1" | bc`
+    tnum=`expr \( ${threads} + 1 \) \* 75 / 100`
     sed -i "s/^PARALLEL_MAKE.*/PARALLEL_MAKE = \"-j ${tnum}\"/" $confdir/local.conf
     sed -i "s/^BB_NUMBER_THREADS.*/BB_NUMBER_THREADS = \"${tnum}\"/" $confdir/local.conf
 

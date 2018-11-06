@@ -177,12 +177,13 @@ parse_repo_line() {
     eval $prefix"commit"=`echo $1 | cut -d, -f4`
     parsed_layers=`echo $1 | cut -d, -f5-`
 
-    # Blank the temp variable
-    temp_layers=""
+    # If no layers= was used, then don't add any layers
+    temp_layers="none"
 
-    # If layers= was used then set the layers variable
+    # If layers= was used then set the layers variable, empty list would add all found layers
     if [ "x$parsed_layers" != "x" ]
     then
+        temp_layers=""
         temp=`echo $parsed_layers | cut -d= -f2`
         # temporarily reset the IFS value to : to split the layers
         for x in `IFS=":";echo $temp`
@@ -199,7 +200,10 @@ parse_repo_line() {
     if [ "x$temp_layers" = "x" ]
     then
         eval $prefix"repo_layers"="all"
-    else 
+    elif [ "x$temp_layers" = "xnone" ]
+    then
+        eval $prefix"repo_layers"="none"
+    else
         eval $prefix"repo_layers"='$temp_layers'
     fi
 }
@@ -315,6 +319,10 @@ configure_repo() {
     elif [ "x$repo_layers" = "x" ]
     then
         select_layers
+    elif [ "x$repo_layers" = "xnone" ]
+    then
+        # Call select layers with the none option to not select any layers
+        select_layers "none"
     fi
 
     verify_layers
@@ -481,6 +489,12 @@ select_layers() {
     #check if any layers exist
     #If so prompt for which layers to configure
     #If there is only one then just configure that layer and don't prompt
+
+    if [ "x$arg1" = "xnone" ]
+    then
+        repo_layers=""
+        return
+    fi
 
     cd $sourcedir
     # Get a count of how many layers there are

@@ -8,6 +8,6 @@ meta-qt5,git://github.com/meta-qt5/meta-qt5.git,thud,HEAD,layers=
 meta-openembedded,git://git.openembedded.org/meta-openembedded,thud,HEAD,layers=meta-networking:meta-python:meta-oe:meta-gnome
 meta-ti,git://git.yoctoproject.org/meta-ti,thud,HEAD,layers=
 meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,master,HEAD,layers=meta-linaro-toolchain:meta-optee
-oe-core,git://git.openembedded.org/openembedded-core,thud,fcc56a2e2689a1574b9b928f8cd53e28721e4b9f,layers=meta
+oe-core,git://git.openembedded.org/openembedded-core,thud,HEAD,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64.conf.sample

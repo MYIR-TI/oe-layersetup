@@ -276,12 +276,12 @@ configure_repo() {
 
     # Check if the repo with $name was already seen.  Use the , at the end
     # of the grep to avoid matching similar named repos.
-    temp=`printf "$output\n" | grep -e "^$name,"`
+    temp=`printf '%s\n' $output | grep -e "^$name,"`
 
     if [ "x$temp" != "x" ]
     then
         echo "This repository ($name) has already been configured with the following values:"
-        printf "\t$temp\n"
+        printf '\t%s\n' $temp
         echo "Skipping configuring duplicate repository"
         return 1
     fi
@@ -928,7 +928,7 @@ then
     then
         mkdir -p $dir
     fi
-    printf "$output\n" > $outputfile
+    printf '%s\n' $output > $outputfile
     echo "Output file is $outputfile"
 fi
 

@@ -3,7 +3,7 @@
 
 bitbake,git://git.openembedded.org/bitbake,1.44,HEAD
 meta-arago,git://arago-project.org/git/meta-arago.git,zeus-next,HEAD,layers=meta-arago-distro:meta-arago-extras
-meta-browser,git://github.com/OSSystems/meta-browser.git,master,26d50665e2f7223c5f4ad7481a8d2431e7cb55fb,layers=
+meta-browser,git://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
 meta-qt5,git://github.com/meta-qt5/meta-qt5.git,zeus,HEAD,layers=
 meta-selinux,git://git.yoctoproject.org/meta-selinux,zeus,HEAD,layers=
 meta-virtualization,git://git.yoctoproject.org/meta-virtualization,zeus,HEAD,layers=
@@ -11,5 +11,5 @@ meta-openembedded,git://git.openembedded.org/meta-openembedded,zeus,HEAD,layers=
 meta-ti,git://git.yoctoproject.org/meta-ti,zeus-next,HEAD,layers=
 meta-linaro,git://git.linaro.org/openembedded/meta-linaro.git,zeus,HEAD,layers=meta-linaro-toolchain:meta-optee
 oe-core,git://git.openembedded.org/openembedded-core,zeus,HEAD,layers=meta
-OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELAYERCONF=./sample-files/bblayers-zeus-browser.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64.conf.sample

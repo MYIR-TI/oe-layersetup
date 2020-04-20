@@ -1,7 +1,7 @@
 # This file takes repo entries in the format
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 bitbake,git://git.openembedded.org/bitbake,master,HEAD
-meta-openembedded,git://git.openembedded.org/meta-openembedded,dunfell,HEAD,layers=meta-python
+meta-openembedded,git://git.openembedded.org/meta-openembedded,dunfell,HEAD,layers=meta-python:meta-oe
 meta-ti,git://git.yoctoproject.org/meta-ti,master,HEAD,layers=
 meta-arm,git://git.yoctoproject.org/meta-arm,master,HEAD,layers=meta-arm
 oe-core,git://git.openembedded.org/openembedded-core,master,HEAD,layers=meta

@@ -3,5 +3,6 @@
 bitbake,git://git.openembedded.org/bitbake,master,HEAD
 poky,git://git.yoctoproject.org/poky,master,HEAD,layers=meta:meta-poky:meta-yocto-bsp
 meta-ti,git://git.yoctoproject.org/meta-ti,master,HEAD,layers=
+meta-arm,git://git.yoctoproject.org/meta-arm,master,HEAD,layers=meta-arm
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-poky.conf.sample

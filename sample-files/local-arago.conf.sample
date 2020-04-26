@@ -48,7 +48,8 @@ SSTATE_DIR = "${OEBASE}/build/sstate-cache"
 # where BitBake should place its temporary files and output. Keep in mind that
 # this includes the extraction and compilation of many applications and the toolchain
 # which can use Gigabytes of hard disk space.
-TMPDIR = "${OEBASE}/build/arago-tmp"
+TMPDIR = "${TOPDIR}/arago-tmp"
+DEPLOY_DIR = "${TOPDIR}/deploy"
 
 #
 # Machine Selection
@@ -135,15 +136,17 @@ ENABLE_BINARY_LOCALE_GENERATION = "0"
 # These two options control how much parallelism BitBake should use. The first 
 # option determines how many tasks bitbake should run in parallel:
 #
-BB_NUMBER_THREADS = "1"
+#BB_NUMBER_THREADS = "1"
 # 
 # The second option controls how many processes make should run in parallel when
 # running compile tasks:
 #
-PARALLEL_MAKE = "-j 1"
+#PARALLEL_MAKE = "-j 1"
 #
 # For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would
 # be appropriate for example
+# These options don't need to be set manually, as OE will determine them automatically,
+# unless need to override that default.
 
 DISTRO   = "arago"
 

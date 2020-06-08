@@ -1,0 +1,14 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,git://git.openembedded.org/bitbake,1.46,6cc09fa33131f71a3fd0e336ff07a4186b41bf8f
+meta-arago,git://arago-project.org/git/meta-arago.git,dunfell,07.00.00,layers=meta-arago-distro:meta-arago-extras
+#meta-browser,git://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
+meta-qt5,git://github.com/meta-qt5/meta-qt5.git,dunfell,fdd19517e17240b0b61765bd02fc483a1bde986f,layers=
+meta-virtualization,git://git.yoctoproject.org/meta-virtualization,dunfell,237879d59e11187a49216a88b73a057408e4b3f7,layers=
+meta-openembedded,git://git.openembedded.org/meta-openembedded,dunfell,e413c1ef621688e69bb7830bb3151ed23b30b73e,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
+meta-ti,git://git.yoctoproject.org/meta-ti,dunfell,07.00.00,layers=
+meta-arm,git://git.yoctoproject.org/meta-arm,dunfell,f8ea9ac3a06f543bd3dc259ffc1b60eb197a132d,layers=meta-arm:meta-arm-toolchain
+oe-core,git://git.openembedded.org/openembedded-core,dunfell,c88cf750f26f6786d6ba5b4f1f7e5d4f0c800e6e,layers=meta
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64.conf.sample

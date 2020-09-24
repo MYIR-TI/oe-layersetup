@@ -41,6 +41,7 @@ OECORELOCALCONFPATH="" # stores the path of the OECORELOCALCONFPATH variable
 outputfile="" # file to save output to if -o is used
 inputfile="" # file containing initial layers if -f is used
 interactive="n" # flag for interactive mode.  Default is n
+resethead="n" # flag for reset head mode.  Default is n
 layers="" # variable holding the layers to add to bblayers.conf
 output="" # variable holding the output to write to outputfile
 scriptdir=`pwd` # directory of this calling script
@@ -68,7 +69,7 @@ cat <<EOM
 
 
 Usage:
-    $0 [-i] [-f inputfile] [-o outputfile] [-d dldir] [-b basedir] [-h]
+    $0 [-i] [-f inputfile] [-o outputfile] [-d dldir] [-b basedir] [-h] [-r]
 
 Parameters:
     -i: Interactive mode.  This mode will query the user to input information
@@ -86,6 +87,7 @@ Parameters:
         where the build will be configured.  The default is the current
         directory.
     -h: This message
+    -r: Reset all previous checkouts or local changes to pull remote branches
 
 Input Files:
     Input files are expected to have the following format
@@ -407,11 +409,17 @@ checkout_branch() {
         git checkout $branch
     fi
 
-    # Now that we are on the proper branch merge the remote branch changes if
+    # Now that we are on the proper branch pull the remote branch changes if
     # any.  In the case of a clean checkout this should be already up to date,
     # but for an existing checkout this should be the changes that were
     # fetched earlier.
-    git merge origin/$branch
+    if [ "x$resethead" = "xy" ]
+    then
+        # Instead of merging, reset to remote branch to avoid conflicts due to rebase
+        git reset --hard origin/$branch
+    else
+        git merge origin/$branch
+    fi
 }
 
 checkout_commit() {
@@ -844,10 +852,11 @@ build_repo_line() {
 ###############
 
 # Parse the input options
-while getopts :if:o:d:b:h arg
+while getopts :irf:o:d:b:h arg
 do
     case $arg in
         i ) interactive="y";;
+        r ) resethead="y";;
         f ) inputfile="$OPTARG";;
         o ) outputfile="$OPTARG";;
         d ) dldir="$OPTARG";;

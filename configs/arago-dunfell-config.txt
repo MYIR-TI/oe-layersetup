@@ -4,11 +4,11 @@
 bitbake,git://git.openembedded.org/bitbake,1.46,HEAD
 meta-arago,git://arago-project.org/git/meta-arago.git,dunfell,HEAD,layers=meta-arago-distro:meta-arago-extras
 #meta-browser,git://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
-meta-qt5,git://github.com/meta-qt5/meta-qt5.git,dunfell,HEAD,layers=
-meta-virtualization,git://git.yoctoproject.org/meta-virtualization,dunfell,HEAD,layers=
-meta-openembedded,git://git.openembedded.org/meta-openembedded,dunfell,HEAD,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
+meta-qt5,git://github.com/meta-qt5/meta-qt5.git,dunfell,0d8eb956015acdea7e77cd6672d08dce18061510,layers=
+meta-virtualization,git://git.yoctoproject.org/meta-virtualization,dunfell,92cd3467502bd27b98a76862ca6525ce425a8479,layers=
+meta-openembedded,git://git.openembedded.org/meta-openembedded,dunfell,f2d02cb71eaff8eb285a1997b30be52486c160ae,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
 meta-ti,git://git.yoctoproject.org/meta-ti,dunfell,HEAD,layers=
 meta-arm,git://git.yoctoproject.org/meta-arm,dunfell,c4f04f3fb66f8f4365b08b553af8206372e90a63,layers=meta-arm:meta-arm-toolchain
-oe-core,git://git.openembedded.org/openembedded-core,dunfell,HEAD,layers=meta
+oe-core,git://git.openembedded.org/openembedded-core,dunfell,72431ee8de5e3a53d259cebf420a7713ac9e1f14,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64.conf.sample

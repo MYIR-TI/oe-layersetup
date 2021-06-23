@@ -1,0 +1,16 @@
+# Sample git config URL redirection
+# Copy this information to ~/.gitconfig or equivalent
+# See https://git-scm.com/docs/git-config for further information
+# To debug, use GIT_CURL_VERBOSE=1 GIT_TRACE=1
+
+[url "git://git.yoctoproject.org/meta-arago"]
+	insteadOf = git://arago-project.org/git/meta-arago
+	insteadOf = http://arago-project.org/git/meta-arago
+
+[url "git://git.yoctoproject.org/meta-ti"]
+	insteadOf = git://arago-project.org/git/meta-ti
+	insteadOf = http://arago-project.org/git/meta-ti
+
+[url "git://git.ti.com/arago-project/oe-layersetup"]
+	insteadOf = git://arago-project.org/git/projects/oe-layersetup
+	insteadOf = http://arago-project.org/git/projects/oe-layersetup

@@ -336,9 +336,9 @@ clone_repo() {
     if [ -d $sourcedir/$name ]
     then
         cd $sourcedir/$name
-        git fetch --all
+        $oebase/git_retry.sh fetch --all
     else
-        git clone $uri $sourcedir/$name
+        $oebase/git_retry.sh clone $uri $sourcedir/$name
         if [ "$?" != "0" ]
         then
             echo "ERROR: Could not clone repository at $uri"

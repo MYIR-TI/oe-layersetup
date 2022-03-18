@@ -773,6 +773,35 @@ EOM
     sed -i "s|^DL_DIR.*|DL_DIR = \"${dldir}\"|" $confdir/local.conf
 }
 
+print_image_names() {
+    SOURCES="${1}"
+    FOLDERS=`find "${SOURCES}" -type d -a -iname images|grep recipes-core|sed -e "s/.*sources\///g"|cut -d '/' -f1|sort -u -r`
+    IMAGES=""
+    for FOLDER in ${FOLDERS}
+    do
+        RECO=""
+        if [ "${FOLDER}" == "meta-arago" ]; then
+            RECO="[recommended]"
+        fi
+        echo "From ${FOLDER}${RECO}:"
+        F_IMAGE_FOLDERS=`find "${SOURCES}/${FOLDER}" -type d -a -iname images|grep recipes-core`
+        for IMG_FOLDER in ${F_IMAGE_FOLDERS}
+        do
+            F_IMAGES=`find "${IMG_FOLDER}" -iname *.bb`
+            if [ -n "${F_IMAGES}" ]; then
+                for img in ${F_IMAGES}
+                do
+                    name=`basename "${img}"|sed 's/\.bb$//g'`
+                    summary=`grep SUMMARY "${img}"|cut -d '=' -f2| sed 's/["/]//g'|xargs  echo`
+                    if [ -z "${summary}" ]; then
+                        summary="No Summary available"
+                    fi
+                    echo -e "\t${name}: ${summary}"
+                done
+            fi
+        done
+    done
+}
 
 create_setenv_file() {
 cat << EOM
@@ -792,13 +821,9 @@ For example:
     MACHINE=xxxxx bitbake <target>
 
 Common targets are:
-    core-image-minimal
-    core-image-sato
-    meta-toolchain
-    meta-toolchain-sdk
-    adt-installer
-    meta-ide-support
 EOM
+print_image_names ${sourcedir}
+
 
     # Write the setenv file
 cat > $confdir/setenv << EOM

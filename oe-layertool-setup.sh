@@ -101,17 +101,17 @@ Input Files:
     file.  For example, when configuring openembedded-core the following can be
     used:
 
-    openembedded-core,git://github.com/openembedded/oe-core.git,master,HEAD
+    openembedded-core,https://github.com/openembedded/oe-core.git,master,HEAD
 
     This would select both the meta and meta-skeleton layers.
 
     or, to limit to only the meta layer you could use the syntax
 
-    openembedded-core,git://github.com/openembedded/oe-core.git,master,HEAD,layers=meta
+    openembedded-core,https://github.com/openembedded/oe-core.git,master,HEAD,layers=meta
 
     or, to explicitly set the meta and meta-skeleton layers use
 
-    openembedded-core,git://github.com/openembedded/oe-core.git,master,HEAD,layers=meta:meta-skeleton
+    openembedded-core,https://github.com/openembedded/oe-core.git,master,HEAD,layers=meta:meta-skeleton
 
     It is also possible to specify the sample conf files for bblayers.conf
     and local.conf using settings like:

@@ -3,8 +3,8 @@
 
 bitbake,git://git.openembedded.org/bitbake,1.40,7c1eb51d1e8a4c5f39bf9dddf05fb0b3598da72b
 meta-arago,git://arago-project.org/git/meta-arago.git,thud,ti2019.01,layers=meta-arago-distro:meta-arago-extras
-meta-browser,git://github.com/OSSystems/meta-browser.git,master,26d50665e2f7223c5f4ad7481a8d2431e7cb55fb,layers=
-meta-qt5,git://github.com/meta-qt5/meta-qt5.git,thud,0630018c0033c91fddda62a49f59a82ba6ec6850,layers=
+meta-browser,https://github.com/OSSystems/meta-browser.git,master,26d50665e2f7223c5f4ad7481a8d2431e7cb55fb,layers=
+meta-qt5,https://github.com/meta-qt5/meta-qt5.git,thud,0630018c0033c91fddda62a49f59a82ba6ec6850,layers=
 meta-virtualization,git://git.yoctoproject.org/meta-virtualization,thud,9b568b6ae1bf1bebcb9552703ee40f9b880e07ed,layers=
 meta-openembedded,git://git.openembedded.org/meta-openembedded,thud,4cd3a39f22a2712bfa8fc657d09fe2c7765a4005,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
 meta-ti,git://git.yoctoproject.org/meta-ti,thud,ti2019.01,layers=

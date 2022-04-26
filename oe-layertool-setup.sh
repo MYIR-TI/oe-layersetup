@@ -780,7 +780,7 @@ print_image_names() {
     for FOLDER in ${FOLDERS}
     do
         RECO=""
-        if [ "${FOLDER}" == "meta-arago" ]; then
+        if [ "${FOLDER}" = "meta-arago" ]; then
             RECO="[recommended]"
         fi
         echo "From ${FOLDER}${RECO}:"
@@ -796,7 +796,7 @@ print_image_names() {
                     if [ -z "${summary}" ]; then
                         summary="No Summary available"
                     fi
-                    echo -e "\t${name}: ${summary}"
+                    echo "    ${name}: ${summary}"
                 done
             fi
         done

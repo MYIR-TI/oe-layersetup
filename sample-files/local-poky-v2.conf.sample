@@ -48,7 +48,7 @@ SSTATE_DIR = "${OEBASE}/build/sstate-cache"
 # where BitBake should place its temporary files and output. Keep in mind that
 # this includes the extraction and compilation of many applications and the toolchain
 # which can use Gigabytes of hard disk space.
-TMPDIR = "${OEBASE}/build/arago-tmp"
+TMPDIR = "${OEBASE}/build/poky-tmp"
 
 #
 # Machine Selection

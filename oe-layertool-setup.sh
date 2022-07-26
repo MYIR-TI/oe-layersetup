@@ -38,6 +38,7 @@ OECORELAYERCONF="" # sample configuration file used for bblayers.conf
 OECORELAYERCONFPATH="" # stores the path of the OECORELAYERCONFPATH variable
 OECORELOCALCONF="" # sample configuration file used for local.conf
 OECORELOCALCONFPATH="" # stores the path of the OECORELOCALCONFPATH variable
+BITBAKE_INCLUSIVE_VARS="no"
 outputfile="" # file to save output to if -o is used
 inputfile="" # file containing initial layers if -f is used
 interactive="n" # flag for interactive mode.  Default is n
@@ -158,6 +159,14 @@ parse_oecore_line() {
     eval $var=$val
 }
 
+# Input is a line of the form BITBAKE.*=value
+parse_bitbake_line() {
+    var=`echo $1 | cut -d= -f1`
+    val=`echo $1 | cut -d= -f2`
+    eval $var=$val
+}
+
+
 
 # Input is a repository description line as detailed in the usage section
 # There is a second optional input that can be passed to prefix the variable
@@ -239,6 +248,15 @@ parse_input_file() {
         if [ "$?" = "0" ]
         then
             parse_oecore_line $line
+            output="$output""$line\n"
+            continue
+        fi
+
+        # If the line starts with OECORE then parse the OECORE setting
+        echo $line | grep -e "^BITBAKE.*=" > /dev/null
+        if [ "$?" = "0" ]
+        then
+            parse_bitbake_line $line
             output="$output""$line\n"
             continue
         fi
@@ -853,8 +871,13 @@ unset BITBAKEDIR
 unset SCRIPTS
 export PATH
 export BUILDDIR=${builddir}
-export BB_ENV_EXTRAWHITE="MACHINE DISTRO TCMODE TCLIBC http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS PARALLEL_MAKE GIT_PROXY_COMMAND GIT_PROXY_IGNORE SOCKS5_PASSWD SOCKS5_USER OEBASE META_SDK_PATH TOOLCHAIN_TYPE TOOLCHAIN_BRAND TOOLCHAIN_BASE TOOLCHAIN_PATH TOOLCHAIN_PATH_ARMV5 TOOLCHAIN_PATH_ARMV7 TOOLCHAIN_PATH_ARMV8 EXTRA_TISDK_FILES TISDK_VERSION ARAGO_BRAND ARAGO_RT_ENABLE ARAGO_SYSTEST_ENABLE ARAGO_KERNEL_SUFFIX TI_SECURE_DEV_PKG_CAT TI_SECURE_DEV_PKG_AUTO TI_SECURE_DEV_PKG_K3 ARAGO_SYSVINIT SYSFW_FILE"
 EOM
+
+    if [ "$BITBAKE_INCLUSIVE_VARS" == "no" ]; then
+        echo "export BB_ENV_EXTRAWHITE=\"MACHINE DISTRO TCMODE TCLIBC http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS PARALLEL_MAKE GIT_PROXY_COMMAND GIT_PROXY_IGNORE SOCKS5_PASSWD SOCKS5_USER OEBASE META_SDK_PATH TOOLCHAIN_TYPE TOOLCHAIN_BRAND TOOLCHAIN_BASE TOOLCHAIN_PATH TOOLCHAIN_PATH_ARMV5 TOOLCHAIN_PATH_ARMV7 TOOLCHAIN_PATH_ARMV8 EXTRA_TISDK_FILES TISDK_VERSION ARAGO_BRAND ARAGO_RT_ENABLE ARAGO_SYSTEST_ENABLE ARAGO_KERNEL_SUFFIX TI_SECURE_DEV_PKG_CAT TI_SECURE_DEV_PKG_AUTO TI_SECURE_DEV_PKG_K3 ARAGO_SYSVINIT SYSFW_FILE\"" >> $confdir/setenv
+    else
+        echo "export BB_ENV_PASSTHROUGH_ADDITIONS=\"MACHINE DISTRO TCMODE TCLIBC http_proxy ftp_proxy https_proxy all_proxy ALL_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS PARALLEL_MAKE GIT_PROXY_COMMAND GIT_PROXY_IGNORE SOCKS5_PASSWD SOCKS5_USER OEBASE META_SDK_PATH TOOLCHAIN_TYPE TOOLCHAIN_BRAND TOOLCHAIN_BASE TOOLCHAIN_PATH TOOLCHAIN_PATH_ARMV5 TOOLCHAIN_PATH_ARMV7 TOOLCHAIN_PATH_ARMV8 EXTRA_TISDK_FILES TISDK_VERSION ARAGO_BRAND ARAGO_RT_ENABLE ARAGO_SYSTEST_ENABLE ARAGO_KERNEL_SUFFIX TI_SECURE_DEV_PKG_CAT TI_SECURE_DEV_PKG_AUTO TI_SECURE_DEV_PKG_K3 ARAGO_SYSVINIT SYSFW_FILE\"" >> $confdir/setenv
+    fi
 }
 
 

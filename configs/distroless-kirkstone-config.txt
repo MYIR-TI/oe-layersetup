@@ -6,3 +6,4 @@ meta-arm,git://git.yoctoproject.org/meta-arm,kirkstone,HEAD,layers=meta-arm:meta
 oe-core,git://git.openembedded.org/openembedded-core,kirkstone,HEAD,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes

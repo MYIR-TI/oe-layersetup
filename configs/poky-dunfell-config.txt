@@ -6,3 +6,4 @@ meta-arm,git://git.yoctoproject.org/meta-arm,dunfell,HEAD,layers=meta-arm:meta-a
 meta-ti,git://git.yoctoproject.org/meta-ti,dunfell,HEAD,layers=
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-poky.conf.sample
+BITBAKE_INCLUSIVE_VARS=no

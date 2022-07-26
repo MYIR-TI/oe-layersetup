@@ -12,3 +12,4 @@ meta-arm,git://git.yoctoproject.org/meta-arm,master,HEAD,layers=meta-arm:meta-ar
 oe-core,git://git.openembedded.org/openembedded-core,master,HEAD,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes

@@ -16,3 +16,4 @@ OECORELAYERCONF=./sample-files/bblayers.conf.sample
 # use below for OECORELAYERCONF to mark it compatible with dunfell
 #OECORELAYERCONF=./sample-files/bblayers-dunfell-browser.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64.conf.sample
+BITBAKE_INCLUSIVE_VARS=no

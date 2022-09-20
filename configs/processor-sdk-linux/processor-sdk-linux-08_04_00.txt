@@ -1,0 +1,17 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,https://git.openembedded.org/bitbake,1.46,7fc4cffebf5dcc1d050416c0b7f7d58c765c1d69
+meta-arago,git://git.yoctoproject.org/meta-arago,dunfell,08.04.00.005,layers=meta-arago-distro:meta-arago-extras
+meta-psdkla,git://git.ti.com/jacinto-linux/meta-psdkla.git,master,b6dcf3fe96473cf01b19301f95fdca166141bbef,layers=
+#meta-browser,git://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
+meta-qt5,https://github.com/meta-qt5/meta-qt5.git,dunfell,5ef3a0ffd3324937252790266e2b2e64d33ef34f,layers=
+meta-virtualization,https://git.yoctoproject.org/meta-virtualization,dunfell,a63a54df3170fed387f810f23cdc2f483ad587df,layers=
+meta-openembedded,https://git.openembedded.org/meta-openembedded,dunfell,52cee67833d1975a5bd52e4556c4cd312425a017,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
+meta-ti,git://git.yoctoproject.org/meta-ti,dunfell,08.04.00.005,layers=
+meta-arm,https://git.yoctoproject.org/meta-arm,dunfell,c4f04f3fb66f8f4365b08b553af8206372e90a63,layers=meta-arm:meta-arm-toolchain
+oe-core,https://git.openembedded.org/openembedded-core,dunfell,3f40d5f095ceb099b604750db96058df00fcd49e,layers=meta
+meta-aws,https://github.com/aws/meta-aws.git,dunfell,a64c32254c3731e9b3c40231bd60d2b21efa0488,layers=
+meta-jupyter,https://github.com/Xilinx/meta-jupyter.git,master,82db248e2eca36e52cbeafe599b755dc87720383,layers=
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64.conf.sample

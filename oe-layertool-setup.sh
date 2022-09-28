@@ -770,9 +770,8 @@ EOM
 
     # set the number of threads
     threads=`cat /proc/cpuinfo | grep -c processor`
-    tnum=`expr \( ${threads} + 1 \) \* 75 / 100`
-    sed -i "s/^PARALLEL_MAKE.*/PARALLEL_MAKE ?= \"-j ${tnum}\"/" $confdir/local.conf
-    sed -i "s/^BB_NUMBER_THREADS.*/BB_NUMBER_THREADS ?= \"${tnum}\"/" $confdir/local.conf
+    sed -i "s/^PARALLEL_MAKE.*/PARALLEL_MAKE ?= \"-j ${threads}\"/" $confdir/local.conf
+    sed -i "s/^BB_NUMBER_THREADS.*/BB_NUMBER_THREADS ?= \"${threads}\"/" $confdir/local.conf
 
     # Find if old DL_DIR was set
     if [ -e $confdir/local.conf.bak ]

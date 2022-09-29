@@ -135,15 +135,20 @@ PATCHRESOLVE = "noop"
 # These two options control how much parallelism BitBake should use. The first 
 # option determines how many tasks bitbake should run in parallel:
 #
-BB_NUMBER_THREADS ?= "1"
+# BB_NUMBER_THREADS ?= "1"
 # 
 # The second option controls how many processes make should run in parallel when
 # running compile tasks:
 #
-PARALLEL_MAKE ?= "-j 1"
+# PARALLEL_MAKE ?= "-j 1"
 #
 # For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would
 # be appropriate for example
+#
+# NOTE: By default, bitbake will choose the number of processeors on your host
+# so you should not need to set this unless you are wanting to lower the number
+# allowed.
+#
 
 # Select a distribution from supported "arago", "angstrom-2010.x" or "poky"
 # By default, go with the "distroless" configuration, when not set

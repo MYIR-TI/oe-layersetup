@@ -768,11 +768,6 @@ EOM
     # First copy the template file
     cp -f $OECORELOCALCONFPATH $confdir/local.conf
 
-    # set the number of threads
-    threads=`cat /proc/cpuinfo | grep -c processor`
-    sed -i "s/^PARALLEL_MAKE.*/PARALLEL_MAKE ?= \"-j ${threads}\"/" $confdir/local.conf
-    sed -i "s/^BB_NUMBER_THREADS.*/BB_NUMBER_THREADS ?= \"${threads}\"/" $confdir/local.conf
-
     # Find if old DL_DIR was set
     if [ -e $confdir/local.conf.bak ]
     then

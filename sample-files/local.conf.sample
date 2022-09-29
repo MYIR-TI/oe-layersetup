@@ -119,9 +119,6 @@ USER_CLASSES ?= "buildstats image-mklibs image-prelink"
 # By default disable interactive patch resolution (tasks will just fail instead):
 PATCHRESOLVE = "noop"
 
-# Qemu 0.12.x is giving too much problems recently (2010.05), so disable it for users
-#ENABLE_BINARY_LOCALE_GENERATION = "0"
-
 # By default the machine configuration file sets the IMAGE_FSTYPES.  But if you
 # would like to add additional file system types you can uncomment the
 # following line and add the additional IMAGE_FSTYPES you want created

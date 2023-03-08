@@ -166,6 +166,13 @@ parse_bitbake_line() {
     eval $var=$val
 }
 
+# Input is a line of the form LOCALCONF:.*=value
+parse_localconf_line() {
+    localconf=`echo "$1" | cut -d: -f2`
+    echo "$localconf" >> $oebase/tmp_append_local.conf
+}
+
+
 
 
 # Input is a repository description line as detailed in the usage section
@@ -221,6 +228,11 @@ parse_repo_line() {
 
 
 parse_input_file() {
+    if [ -e $oebase/tmp_append_local.conf ]
+    then
+        rm $oebase/tmp_append_local.conf
+    fi
+
     while read line
     do
         # clean the parsing variables for each run
@@ -252,7 +264,7 @@ parse_input_file() {
             continue
         fi
 
-        # If the line starts with OECORE then parse the OECORE setting
+        # If the line starts with BITBAKE then parse the BITBAKE setting
         echo $line | grep -e "^BITBAKE.*=" > /dev/null
         if [ "$?" = "0" ]
         then
@@ -261,6 +273,14 @@ parse_input_file() {
             continue
         fi
 
+        # If the line starts with LOCALCONF: then parse the LOCALCONF: setting
+        echo $line | grep -e "^LOCALCONF:.*" > /dev/null
+        if [ "$?" = "0" ]
+        then
+            parse_localconf_line "$line"
+            output="$output""$line\n"
+            continue
+        fi
         # Since the line is not a comment or an OECORE setting let's assume
         # it is a repository information line and parse it
         parse_repo_line $line
@@ -783,6 +803,21 @@ EOM
     fi
 
     sed -i "s|^DL_DIR.*|DL_DIR = \"${dldir}\"|" $confdir/local.conf
+
+    if [ -e $oebase/tmp_append_local.conf ]
+    then
+        echo "" >> $confdir/local.conf
+        echo "#====================================================================" >> $confdir/local.conf
+        echo "# LOCALCONF: settings from config file:" >> $confdir/local.conf
+        echo "#   $inputfile" >> $confdir/local.conf
+        echo "#" >> $confdir/local.conf
+        echo "# Do not remove." >> $confdir/local.conf
+        echo "#--------------------------------------------------------------------" >> $confdir/local.conf
+        cat $oebase/tmp_append_local.conf >> $confdir/local.conf
+        echo "#====================================================================" >> $confdir/local.conf
+        echo "" >>  $confdir/local.conf
+        rm $oebase/tmp_append_local.conf
+    fi
 }
 
 print_image_names() {

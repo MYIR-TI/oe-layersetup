@@ -1,9 +1,9 @@
 # This file takes repo entries in the format
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
-bitbake,git://git.openembedded.org/bitbake,1.46,HEAD
-poky,git://git.yoctoproject.org/poky,dunfell,HEAD,layers=meta:meta-poky:meta-yocto-bsp
-meta-arm,git://git.yoctoproject.org/meta-arm,dunfell,HEAD,layers=meta-arm:meta-arm-toolchain
-meta-ti,git://git.yoctoproject.org/meta-ti,dunfell,HEAD,layers=
+bitbake,https://git.openembedded.org/bitbake,1.46,HEAD
+poky,https://git.yoctoproject.org/poky,dunfell,HEAD,layers=meta:meta-poky:meta-yocto-bsp
+meta-arm,https://git.yoctoproject.org/meta-arm,dunfell,HEAD,layers=meta-arm:meta-arm-toolchain
+meta-ti,https://git.yoctoproject.org/meta-ti,dunfell,HEAD,layers=
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-poky.conf.sample
 BITBAKE_INCLUSIVE_VARS=no

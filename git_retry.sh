@@ -1,10 +1,11 @@
 #!/bin/bash
 
-let glRetries=5
+let glMaxRetries=5
+let glCurrRetry=1
 let glDelay=15
 let glExitCode=0
 
-while [ $glRetries -gt 0 ]; do
+while [ $glMaxRetries -ge $glCurrRetry ]; do
 
     git "$@"
 
@@ -14,12 +15,16 @@ while [ $glRetries -gt 0 ]; do
         exit
     fi
 
-    let glRetries=$glRetries-1
+    let glSleep=$glDelay*$glCurrRetry
 
-    if [ $glRetries -gt 0 ]; then
-        echo "git failed... remaining attempts: $glRetries"
-        sleep $glDelay
+    let glRemainingRetries=$glMaxRetries-$glCurrRetry
+
+    if [ $glRemainingRetries -gt 0 ]; then
+        echo "git failed... remaining attempts: $glRemainingRetries    sleeping $glSleep seconds"
+        sleep $glSleep
     fi
+
+    let glCurrRetry=$glCurrRetry+1
 
 done
 

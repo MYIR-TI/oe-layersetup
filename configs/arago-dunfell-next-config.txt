@@ -1,6 +1,14 @@
 # This file takes repo entries in the format
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
+MOTD: NOTE:
+MOTD: NOTE: This config is reserved for CI/CD testing and requires manual intervention to build
+MOTD: NOTE:
+MOTD: NOTE: A few SRCREVs in the recipes might refer to commits on cicd/next branches for their
+MOTD: NOTE: repos.  These recipes will not build correctly without also a change in your local.conf
+MOTD: NOTE: to point the recipe to the appropriate cicd/next branch for that recipe.
+MOTD: NOTE:
+
 bitbake,https://git.openembedded.org/bitbake,1.46,HEAD
 meta-arago,https://git.yoctoproject.org/meta-arago,dunfell-next,HEAD,layers=meta-arago-distro:meta-arago-extras
 # meta-browser,https://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
@@ -17,3 +25,4 @@ OECORELAYERCONF=./sample-files/bblayers.conf.sample
 #OECORELAYERCONF=./sample-files/bblayers-dunfell-browser.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64.conf.sample
 BITBAKE_INCLUSIVE_VARS=no
+

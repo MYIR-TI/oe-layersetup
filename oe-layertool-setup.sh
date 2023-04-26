@@ -172,6 +172,14 @@ parse_localconf_line() {
     echo "$localconf" >> $oebase/tmp_append_local.conf
 }
 
+# Input is a line of the form MOTD:<msg>
+parse_motd_line() {
+    motd=`echo "$1" | cut -d: -f2-100`
+    echo "$motd" >> $oebase/tmp_motd
+    echo "$motd"
+}
+
+
 
 
 
@@ -233,6 +241,11 @@ parse_input_file() {
         rm $oebase/tmp_append_local.conf
     fi
 
+    if [ -e $oebase/tmp_motd ]
+    then
+        rm $oebase/tmp_motd
+    fi
+
     while read line
     do
         # clean the parsing variables for each run
@@ -281,6 +294,15 @@ parse_input_file() {
             output="$output""$line\n"
             continue
         fi
+
+        # If the line starts with MOTD: then parse the MOTD: setting
+        echo $line | grep -e "^MOTD:.*" > /dev/null
+        if [ "$?" = "0" ]
+        then
+            parse_motd_line "$line"
+            continue
+        fi
+
         # Since the line is not a comment or an OECORE setting let's assume
         # it is a repository information line and parse it
         parse_repo_line $line
@@ -820,6 +842,16 @@ EOM
     fi
 }
 
+print_motd() {
+
+    if [ -e $oebase/tmp_motd ]
+    then
+        echo ""
+        cat $oebase/tmp_motd
+        echo ""
+    fi
+}
+
 print_image_names() {
     SOURCES="${1}"
     FOLDERS=`find "${SOURCES}" -type d -a -iname images|grep recipes-core|sed -e "s/.*sources\///g"|cut -d '/' -f1|sort -u -r`
@@ -961,6 +993,8 @@ check_input
 if [ "x$inputfile" != "x" ]
 then
     parse_input_file
+
+    print_motd
 fi
 
 if [ "x$interactive" = "xy" ]
@@ -1019,3 +1053,5 @@ then
 fi
 
 create_setenv_file
+
+print_motd

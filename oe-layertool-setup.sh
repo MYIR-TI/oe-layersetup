@@ -168,7 +168,7 @@ parse_bitbake_line() {
 
 # Input is a line of the form LOCALCONF:.*=value
 parse_localconf_line() {
-    localconf=`echo "$1" | cut -d: -f2`
+    localconf=`echo "$1" | cut -d: -f2-100`
     echo "$localconf" >> $oebase/tmp_append_local.conf
 }
 

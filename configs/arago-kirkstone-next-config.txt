@@ -10,7 +10,7 @@ MOTD: NOTE: to point the recipe to the appropriate cicd/next branch for that rec
 MOTD: NOTE:
 
 bitbake,https://git.openembedded.org/bitbake,2.0,HEAD
-meta-arago,https://git.yoctoproject.org/meta-arago,kirkstone-next,HEAD,layers=meta-arago-distro:meta-arago-extras
+meta-arago,https://git.yoctoproject.org/meta-arago,kirkstone-next,HEAD,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos
 #meta-browser,https://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
 meta-qt5,https://github.com/meta-qt5/meta-qt5.git,kirkstone,HEAD,layers=
 meta-virtualization,https://git.yoctoproject.org/meta-virtualization,kirkstone,HEAD,layers=

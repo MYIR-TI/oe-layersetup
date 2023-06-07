@@ -21,3 +21,4 @@ oe-core,https://git.openembedded.org/openembedded-core,master,HEAD,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
+LOCALCONF:BRANCH:pn-ltp-ddt = "cicd"

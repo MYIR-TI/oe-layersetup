@@ -1,0 +1,23 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+MOTD: NOTE:
+MOTD: NOTE: This config is reserved for CI/CD testing and requires manual intervention to build
+MOTD: NOTE:
+MOTD: NOTE: A few SRCREVs in the recipes might refer to commits on cicd/next branches for their
+MOTD: NOTE: repos.  These recipes will not build correctly without also a change in your local.conf
+MOTD: NOTE: to point the recipe to the appropriate cicd/next branch for that recipe.
+MOTD: NOTE:
+
+bitbake,https://git.openembedded.org/bitbake,master,HEAD
+meta-arago,https://git.yoctoproject.org/meta-arago,master-next,HEAD,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos
+#meta-browser,https://github.com/OSSystems/meta-browser.git,master,5f365ef0f842ba4651efe88787cf9c63bc8b6cb3,layers=
+meta-qt5,https://github.com/meta-qt5/meta-qt5.git,master,HEAD,layers=
+meta-virtualization,https://git.yoctoproject.org/meta-virtualization,master,HEAD,layers=
+meta-openembedded,https://git.openembedded.org/meta-openembedded,master,HEAD,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems
+meta-ti,https://git.yoctoproject.org/meta-ti,master-next,HEAD,layers=meta-ti-extras:meta-ti-bsp
+meta-arm,https://git.yoctoproject.org/meta-arm,master,HEAD,layers=meta-arm:meta-arm-toolchain
+oe-core,https://git.openembedded.org/openembedded-core,master,HEAD,layers=meta
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes

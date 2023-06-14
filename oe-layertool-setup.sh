@@ -803,7 +803,7 @@ EOM
     # Find if old DL_DIR was set
     if [ -e "$confdir/local.conf.bak" ]
     then
-        old_dldir=$(cat "$confdir/local.conf.bak" | grep -e "^DL_DIR =" | sed 's|DL_DIR = ||' | sed 's/"//g')
+        old_dldir=$(grep -e "^DL_DIR =" "$confdir/local.conf.bak" | sed 's|DL_DIR = ||' | sed 's/"//g')
     else
         old_dldir="$oebase/downloads"
     fi

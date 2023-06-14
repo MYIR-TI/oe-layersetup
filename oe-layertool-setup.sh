@@ -966,6 +966,14 @@ do
     esac
 done
 
+# add early sanity check
+if printf '%s\n' "$oebase" | grep -q '\s'
+then
+   printf '%s\n' "OE-Base path has whitespace characters in it's path!" \
+                 "This is currently unsupported." ;
+   exit 1
+fi
+
 # create passed in directory if it doesn't exist
 mkdir -p "$oebase"
 

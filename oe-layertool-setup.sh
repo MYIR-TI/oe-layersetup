@@ -126,7 +126,7 @@ exit 1
 
 check_input() {
     # Check that at least -i or -f was used
-    if [ "$interactive" = "n" -a "x$inputfile" = "x" ]
+    if [ "$interactive" = "n" ] && [ "x$inputfile" = "x" ]
     then
         echo "ERROR: You must either use this script with the -i or -f options"
         usage
@@ -1000,7 +1000,7 @@ fi
 if [ "x$interactive" = "xy" ]
 then
     cont="y"
-    while [ "x$cont" = "xy" -o "x$cont" = "xY" ]
+    while [ "x$cont" = "xy" ] || [ "x$cont" = "xY" ]
     do
         # clean up the variables for each repo
         name=""

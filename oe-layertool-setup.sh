@@ -818,16 +818,18 @@ EOM
 
     if [ -e "$oebase/tmp_append_local.conf" ]
     then
-        echo "" >> "$confdir/local.conf"
-        echo "#====================================================================" >> "$confdir/local.conf"
-        echo "# LOCALCONF: settings from config file:" >> "$confdir/local.conf"
-        echo "#   $inputfile" >> "$confdir/local.conf"
-        echo "#" >> "$confdir/local.conf"
-        echo "# Do not remove." >> "$confdir/local.conf"
-        echo "#--------------------------------------------------------------------" >> "$confdir/local.conf"
-        cat "$oebase/tmp_append_local.conf" >> "$confdir/local.conf"
-        echo "#====================================================================" >> "$confdir/local.conf"
-        echo "" >>  "$confdir/local.conf"
+        {
+            echo "";
+            echo "#====================================================================";
+            echo "# LOCALCONF: settings from config file:";
+            echo "#   $inputfile";
+            echo "#";
+            echo "# Do not remove.";
+            echo "#--------------------------------------------------------------------";
+            cat "$oebase/tmp_append_local.conf";
+            echo "#====================================================================";
+            echo "";
+        } >> "$confdir/local.conf"
         rm "$oebase/tmp_append_local.conf"
     fi
 }

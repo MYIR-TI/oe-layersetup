@@ -347,10 +347,10 @@ configure_repo() {
         get_repo_uri
     fi
 
-    printf '%s\n' ""
-    printf '%s\n' ""
-    printf '%s\n' "cloning repo $name"
-    printf '%s\n' ""
+    printf '%s\n' "" \
+                  "" \
+                  "cloning repo $name" \
+                  "" ;
 
     clone_repo
 
@@ -522,8 +522,8 @@ verify_layers() {
     do
         if [ ! -f "$sourcedir/$l/conf/layer.conf" ]
         then
-            printf '%s\n' "ERROR: the $l layer in the $name repository could not be"
-            printf '%s\n' "       found.  Bailing out."
+            printf '%s\n' "ERROR: the $l layer in the $name repository could not be" \
+                          "       found.  Bailing out." ;
             exit 1
         fi
     done
@@ -790,11 +790,11 @@ NOTE: You will probably want to change the default MACHINE setting in the
       local.conf file to the machine you are trying to build.
 
 EOM
-    
+
     if [ -e "$confdir/local.conf" ]
     then
-        printf '%s\n' "WARNING: Found existing $confdir/local.conf"
-        printf '%s\n' "Saving a backup to $confdir/local.conf.bak"
+        printf '%s\n' "WARNING: Found existing $confdir/local.conf" \
+                      "Saving a backup to $confdir/local.conf.bak";
         cp -f "$confdir/local.conf" "$confdir/local.conf.bak"
     fi
 
@@ -820,16 +820,16 @@ EOM
     if [ -e "$oebase/tmp_append_local.conf" ]
     then
         {
-            printf '%s\n' "";
-            printf '%s\n' "#====================================================================";
-            printf '%s\n' "# LOCALCONF: settings from config file:";
-            printf '%s\n' "#   $inputfile";
-            printf '%s\n' "#";
-            printf '%s\n' "# Do not remove.";
-            printf '%s\n' "#--------------------------------------------------------------------";
+            printf '%s\n' "" \
+                          "#====================================================================" \
+                          "# LOCALCONF: settings from config file:" \
+                          "#   $inputfile" \
+                          "#" \
+                          "# Do not remove." \
+                          "#--------------------------------------------------------------------" ;
             cat "$oebase/tmp_append_local.conf";
-            printf '%s\n' "#====================================================================";
-            printf '%s\n' "";
+            printf '%s\n' "#====================================================================" \
+                          "" ;
         } >> "$confdir/local.conf"
         rm "$oebase/tmp_append_local.conf"
     fi
@@ -1024,9 +1024,9 @@ then
 
         save_layers
 
-        printf '%s\n' ""
-        printf '%s\n' ""
-        printf '%s\n' "Would you like to configure another repository? [y/n] "
+        printf '%s\n' "" \
+                      "" ;
+        printf '%s' "Would you like to configure another repository? [y/n] "
         read -r cont
     done
 fi

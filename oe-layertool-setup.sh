@@ -386,9 +386,8 @@ configure_repo() {
 clone_repo() {
     # check if the repo already exists.  if so then fetch the latest updates,
     # else clone it
-    if [ -d "$sourcedir/$name" ]
+    if cd "$sourcedir/$name" 2> /dev/null
     then
-        cd "$sourcedir/$name"
         "$scriptdir/git_retry.sh" fetch --all
     else
         if ! "$scriptdir/git_retry.sh" clone "$uri" "$sourcedir/$name"
@@ -405,7 +404,7 @@ get_repo_branch() {
 
     while [ "$found" = "0" ]
     do
-        cd "$sourcedir/$name"
+        cd "$sourcedir/$name" || return 1
 
         # Get a unique list of branches for the user to chose from
         # Also delete the origin/HEAD line that the -r option returns
@@ -448,7 +447,7 @@ EOM
 }
 
 checkout_branch() {
-    cd "$sourcedir/$name"
+    cd "$sourcedir/$name" || return 1
 
     # Check if a local branch already exists to track the remote branch.
     # If not then create a tracking branch and checkout the branch
@@ -474,7 +473,7 @@ checkout_branch() {
 }
 
 checkout_commit() {
-    cd "$sourcedir/$name"
+    cd "$sourcedir/$name" || return 1
     if [ "$commit" != "HEAD" ]
     then
         git checkout $commit
@@ -483,7 +482,7 @@ checkout_commit() {
 
 get_repo_commit() {
   # prompt for what commit to use with HEAD as default
-    cd "$sourcedir/$name"
+    cd "$sourcedir/$name" || return 1
 cat << EOM
 
 
@@ -517,7 +516,7 @@ EOM
 }
 
 verify_layers() {
-    cd "$sourcedir"
+    cd "$sourcedir" || return 1
     for l in $repo_layers
     do
         if [ ! -f "$sourcedir/$l/conf/layer.conf" ]
@@ -555,7 +554,7 @@ select_layers() {
         return
     fi
 
-    cd "$sourcedir"
+    cd "$sourcedir" || return 1
     # Get a count of how many layers there are
     count=$(find "$name" -name "layer.conf" | grep -c layer.conf)
 
@@ -646,7 +645,7 @@ get_oecorelayerconf() {
         return
     fi
 
-    cd "$sourcedir"
+    cd "$sourcedir" || return 1
     confs=$(find . -name "bblayers.conf.sample")
 
     done="n"
@@ -701,7 +700,7 @@ get_oecorelocalconf() {
         return
     fi
 
-    cd "$sourcedir"
+    cd "$sourcedir" || return 1
     confs=$(find . -name "local.conf.sample")
 
     done="n"
@@ -970,9 +969,9 @@ mkdir -p "$oebase"
 
 # retrive the absolute path to the oebase directory incase
 # a relative path is passed in
-cd "$oebase"
+cd "$oebase" || exit 1
 oebase=$(pwd)
-cd -
+cd - || exit 1
 
 # Populate the following variables depending on the value of oebase
 sourcedir="$oebase/sources"
@@ -1031,7 +1030,7 @@ config_oecorelocalconf
 if [ -n "$outputfile" ]
 then
     # make sure that the directory for the output file exists
-    cd "$oebase"
+    cd "$oebase" || exit 1
     dir=$(dirname "$outputfile")
     if [ ! -d "$dir" ]
     then

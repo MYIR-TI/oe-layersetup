@@ -262,15 +262,13 @@ parse_input_file() {
         fi
 
         # Skip comment lines
-        echo "$line" | grep -e "^#" > /dev/null
-        if [ "$?" = "0" ]
+        if echo "$line" | grep -q -e "^#"
         then
             continue
         fi
 
         # If the line starts with OECORE then parse the OECORE setting
-        echo "$line" | grep -e "^OECORE.*=" > /dev/null
-        if [ "$?" = "0" ]
+        if echo "$line" | grep -q -e "^OECORE.*="
         then
             parse_oecore_line "$line"
             output="${output}${line}\n"
@@ -278,8 +276,7 @@ parse_input_file() {
         fi
 
         # If the line starts with BITBAKE then parse the BITBAKE setting
-        echo "$line" | grep -e "^BITBAKE.*=" > /dev/null
-        if [ "$?" = "0" ]
+        if echo "$line" | grep -q -e "^BITBAKE.*="
         then
             parse_bitbake_line "$line"
             output="${output}${line}\n"
@@ -287,8 +284,7 @@ parse_input_file() {
         fi
 
         # If the line starts with LOCALCONF: then parse the LOCALCONF: setting
-        echo "$line" | grep -e "^LOCALCONF:.*" > /dev/null
-        if [ "$?" = "0" ]
+        if echo "$line" | grep -q -e "^LOCALCONF:.*"
         then
             parse_localconf_line "$line"
             output="${output}${line}\n"
@@ -296,8 +292,7 @@ parse_input_file() {
         fi
 
         # If the line starts with MOTD: then parse the MOTD: setting
-        echo "$line" | grep -e "^MOTD:.*" > /dev/null
-        if [ "$?" = "0" ]
+        if echo "$line" | grep -q -e "^MOTD:.*"
         then
             parse_motd_line "$line"
             continue
@@ -307,11 +302,9 @@ parse_input_file() {
         # it is a repository information line and parse it
         parse_repo_line "$line"
 
-        configure_repo
-
         # if the return from configure repo was non-zero then do not save
         # the output
-        if [ "$?" != "0" ]
+        if ! configure_repo
         then
             continue
         fi
@@ -398,8 +391,7 @@ clone_repo() {
         cd "$sourcedir/$name"
         "$scriptdir/git_retry.sh" fetch --all
     else
-        "$scriptdir/git_retry.sh" clone "$uri" "$sourcedir/$name"
-        if [ "$?" != "0" ]
+        if ! "$scriptdir/git_retry.sh" clone "$uri" "$sourcedir/$name"
         then
             echo "ERROR: Could not clone repository at $uri"
             exit 1
@@ -461,8 +453,7 @@ checkout_branch() {
     # Check if a local branch already exists to track the remote branch.
     # If not then create a tracking branch and checkout the branch
     # else just checkout the existing branch
-    git branch | grep "$branch" > /dev/null
-    if [ "$?" != "0" ]
+    if git branch | grep -q "$branch"
     then
         git checkout "origin/$branch" -b "$branch" --track
     else
@@ -1009,9 +1000,7 @@ then
         commit=""
         repo_layers=""
 
-        configure_repo
-
-        if [ "$?" != "0" ]
+        if ! configure_repo
         then
             continue
         fi

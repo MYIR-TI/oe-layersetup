@@ -338,12 +338,12 @@ configure_repo() {
 
     # Check if the repo with $name was already seen.  Use the , at the end
     # of the grep to avoid matching similar named repos.
-    temp=$(printf '%s\n' $output | grep -e "^$name,")
+    temp=$(printf '%s\n' "$output" | grep -e "^$name,")
 
     if [ -n "$temp" ]
     then
         echo "This repository ($name) has already been configured with the following values:"
-        printf '\t%s\n' $temp
+        printf '\t%s\n' "$temp"
         echo "Skipping configuring duplicate repository"
         return 1
     fi
@@ -422,7 +422,7 @@ get_repo_branch() {
         do
             branches="$branches"$(echo $b | sed 's:.*origin/::g')"\n"
         done
-        branches=$(printf "$branches\n" | sort | uniq)
+        branches=$(printf '%s\n' "$branches" | sort | uniq)
 
 cat << EOM
 
@@ -503,12 +503,12 @@ EOM
     tags=$(git tag)
     if [ -z "$tags" ]
     then
-        printf "\tNo tags found\n"
+        printf '\t%s\n' "No tags found"
     else
         # Format the tags nicely
         for t in $tags
         do
-            printf "\t* $t\n"
+            printf '\t%s\n' "* $t"
         done
     fi
 cat << EOM
@@ -597,7 +597,7 @@ EOM
 
     for l in $t_layers
     do
-        printf "\t"$(echo $l | sed "s:${name}\/::")"\n"
+        printf '\t%s\n' "$(echo $l | sed "s:${name}\/::")"
     done
 
 cat << EOM
@@ -673,7 +673,7 @@ EOM
 
         for f in $confs
         do
-            printf "\t$f\n"
+            printf '\t%s\n' "$f"
         done
 
 cat << EOM
@@ -728,7 +728,7 @@ EOM
 
         for f in $confs
         do
-            printf "\t$f\n"
+            printf '\t%s\n' "$f"
         done
 
 cat << EOM
@@ -777,7 +777,7 @@ BBLAYERS += " \\
 EOM
     for l in $layers
     do
-        printf "\t$l \\%b" "\n" >> $confdir/bblayers.conf
+        printf '\t%s \\\n' "$l" >> $confdir/bblayers.conf
     done
     echo "\"" >> $confdir/bblayers.conf
 }
@@ -1048,7 +1048,7 @@ then
     then
         mkdir -p $dir
     fi
-    printf '%s\n' $output > $outputfile
+    printf '%s\n' "$output" > $outputfile
     echo "Output file is $outputfile"
 fi
 

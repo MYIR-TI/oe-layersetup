@@ -211,6 +211,13 @@ parse_repo_line() {
     then
         temp_layers=""
         temp=$(printf '%s\n' "$parsed_layers" | cut -d= -f2)
+        # sanity check for whitespace in layer names string
+        if printf '%s\n' "$temp" | grep -q '\s'
+        then
+            printf '%s\n' "Whitespace character detected in layer names string!" \
+                          "This is currently unsupported." ;
+            exit 1
+        fi
         # use tr to split the layers since we assume layer names don't have
         # whitespace characters later anyway
         for x in $(printf '%s\n' "$temp" | tr ':' ' ')

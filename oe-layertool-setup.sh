@@ -962,7 +962,7 @@ do
         o ) outputfile="$OPTARG";;
         d ) dldir="$OPTARG";;
         b ) oebase="$OPTARG";;
-        h ) usage;;
+        * ) usage;;
     esac
 done
 

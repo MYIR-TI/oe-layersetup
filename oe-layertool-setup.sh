@@ -848,7 +848,6 @@ print_motd() {
 print_image_names() {
     SOURCES="${1}"
     FOLDERS=$(find "${SOURCES}" -type d -a -iname images|grep recipes-core|sed -e "s/.*sources\///g"|cut -d '/' -f1|sort -u -r)
-    IMAGES=""
     for FOLDER in ${FOLDERS}
     do
         RECO=""

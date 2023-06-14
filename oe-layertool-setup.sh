@@ -246,7 +246,7 @@ parse_input_file() {
         rm "$oebase/tmp_motd"
     fi
 
-    while read line
+    while read -r line
     do
         # clean the parsing variables for each run
         name=""
@@ -434,7 +434,7 @@ $branches
 
 What branch would you like to checkout for the $name repository? 
 EOM
-        read input
+        read -r input
 
         # check that the branch is in the list of branches
         # NOTE: using a for loop here because I want exact matches.
@@ -517,7 +517,7 @@ You can either select one of these tags or specify your own commit SHA sum, or
 press ENTER to use the HEAD of the current branch.
 EOM
 
-    read input
+    read -r input
 
     if [ -z "$input" ]
     then
@@ -606,7 +606,7 @@ Please provide the list of layers you wish to use as a space separated list,
 or press enter to use all of the layers.
 EOM
 
-        read input
+        read -r input
     fi
 
     if [ -z "$input" ]
@@ -625,7 +625,7 @@ cat << EOM
 What is the name of the repository you want to configure?
 EOM
 
-    read name
+    read -r name
 }
 
 
@@ -637,7 +637,7 @@ cat << EOM
 What is the git clone uri of the $name repository?
 EOM
 
-    read uri
+    read -r uri
 }
 
 
@@ -681,7 +681,7 @@ Please select one of the above sample files to use as a template for
 configuring your build environment.
 EOM
 
-        read input
+        read -r input
 
         if [ -e "$input" ]
         then
@@ -736,7 +736,7 @@ Please select one of the above sample files to use as a template for
 configuring your build environment.
 EOM
 
-        read input
+        read -r input
 
         if [ -e "$input" ]
         then
@@ -1029,7 +1029,7 @@ then
         echo ""
         echo ""
         echo "Would you like to configure another repository? [y/n] "
-        read cont
+        read -r cont
     done
 fi
 

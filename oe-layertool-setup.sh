@@ -126,7 +126,7 @@ exit 1
 
 check_input() {
     # Check that at least -i or -f was used
-    if [ "$interactive" = "n" ] && [ "x$inputfile" = "x" ]
+    if [ "$interactive" = "n" ] && [ -z "$inputfile" ]
     then
         echo "ERROR: You must either use this script with the -i or -f options"
         usage
@@ -207,7 +207,7 @@ parse_repo_line() {
     temp_layers="none"
 
     # If layers= was used then set the layers variable, empty list would add all found layers
-    if [ "x$parsed_layers" != "x" ]
+    if [ -n "$parsed_layers" ]
     then
         temp_layers=""
         temp=$(echo $parsed_layers | cut -d= -f2)
@@ -223,10 +223,10 @@ parse_repo_line() {
 
     # Assign the layers.  If the temp_layers is empty then set the layers
     # to all and we will fill in the actual layers in the later steps.
-    if [ "x$temp_layers" = "x" ]
+    if [ -z "$temp_layers" ]
     then
         eval $prefix"repo_layers"="all"
-    elif [ "x$temp_layers" = "xnone" ]
+    elif [ "$temp_layers" = "none" ]
     then
         eval $prefix"repo_layers"="none"
     else
@@ -256,7 +256,7 @@ parse_input_file() {
         repo_layers=""
 
         # Skip empty lines
-        if [ "x$line" = "x" ]
+        if [ -z "$line" ]
         then
             continue
         fi
@@ -331,7 +331,7 @@ parse_input_file() {
 
 
 configure_repo() {
-    if [ "x$name" = "x" ]
+    if [ -z "$name" ]
     then
         get_repo_name
     fi
@@ -340,7 +340,7 @@ configure_repo() {
     # of the grep to avoid matching similar named repos.
     temp=$(printf '%s\n' $output | grep -e "^$name,")
 
-    if [ "x$temp" != "x" ]
+    if [ -n "$temp" ]
     then
         echo "This repository ($name) has already been configured with the following values:"
         printf '\t%s\n' $temp
@@ -348,7 +348,7 @@ configure_repo() {
         return 1
     fi
   
-    if [ "x$uri" = "x" ]
+    if [ -z "$uri" ]
     then
         get_repo_uri
     fi
@@ -360,28 +360,28 @@ configure_repo() {
 
     clone_repo
 
-    if [ "x$branch" = "x" ]
+    if [ -z "$branch" ]
     then
         get_repo_branch
     fi
 
     checkout_branch
 
-    if [ "x$commit" = "x" ]
+    if [ -z "$commit" ]
     then
         get_repo_commit
     fi
 
     checkout_commit
 
-    if [ "x$repo_layers" = "xall" ]
+    if [ "$repo_layers" = "all" ]
     then
         # Call select layers with the all option to select all layers
         select_layers "all"
-    elif [ "x$repo_layers" = "x" ]
+    elif [ -z "$repo_layers" ]
     then
         select_layers
-    elif [ "x$repo_layers" = "xnone" ]
+    elif [ "$repo_layers" = "none" ]
     then
         # Call select layers with the none option to not select any layers
         select_layers "none"
@@ -473,7 +473,7 @@ checkout_branch() {
     # any.  In the case of a clean checkout this should be already up to date,
     # but for an existing checkout this should be the changes that were
     # fetched earlier.
-    if [ "x$resethead" = "xy" ]
+    if [ "$resethead" = "y" ]
     then
         # Instead of merging, reset to remote branch to avoid conflicts due to rebase
         git reset --hard origin/$branch
@@ -484,7 +484,7 @@ checkout_branch() {
 
 checkout_commit() {
     cd $sourcedir/$name
-    if [ "x$commit" != "xHEAD" ]
+    if [ "$commit" != "HEAD" ]
     then
         git checkout $commit
     fi
@@ -501,7 +501,7 @@ The $name repository has the following tags available:
 
 EOM
     tags=$(git tag)
-    if [ "x$tags" = "x" ]
+    if [ -z "$tags" ]
     then
         printf "\tNo tags found\n"
     else
@@ -519,7 +519,7 @@ EOM
 
     read input
 
-    if [ "x$input" = "x" ]
+    if [ -z "$input" ]
     then
         commit="HEAD"
     fi
@@ -558,7 +558,7 @@ select_layers() {
     #If so prompt for which layers to configure
     #If there is only one then just configure that layer and don't prompt
 
-    if [ "x$arg1" = "xnone" ]
+    if [ "$arg1" = "none" ]
     then
         repo_layers=""
         return
@@ -583,7 +583,7 @@ select_layers() {
 
     t_layers=$(find $name -name "layer.conf" | sed 's:\/conf\/layer.conf::')
 
-    if [ "x$arg1" != "xall" ]
+    if [ "$arg1" != "all" ]
     then
         echo "arg1 = $arg1"
         # Prompt for which layers to configure
@@ -609,7 +609,7 @@ EOM
         read input
     fi
 
-    if [ "x$input" = "x" ]
+    if [ -z "$input" ]
     then
         repo_layers=$t_layers
     else
@@ -643,7 +643,7 @@ EOM
 
 get_oecorelayerconf() {
     # Check if the variable is already set.
-    if [ "x$OECORELAYERCONF" != "x" ]
+    if [ -n "$OECORELAYERCONF" ]
     then
         OECORELAYERCONFPATH=$scriptdir/$OECORELAYERCONF
 
@@ -697,7 +697,7 @@ EOM
 
 get_oecorelocalconf() {
     # Check if the variable is already set.
-    if [ "x$OECORELOCALCONF" != "x" ]
+    if [ -n "$OECORELOCALCONF" ]
     then
         OECORELOCALCONFPATH=$scriptdir/$OECORELOCALCONF
 
@@ -819,7 +819,7 @@ EOM
     fi
 
     # If command line option was not set use the old dldir
-    if [ "x$dldir" = "x" ]
+    if [ -z "$dldir" ]
     then
         dldir=$old_dldir
     fi
@@ -990,17 +990,17 @@ confdir="$builddir/conf"
 
 check_input
 
-if [ "x$inputfile" != "x" ]
+if [ -n "$inputfile" ]
 then
     parse_input_file
 
     print_motd
 fi
 
-if [ "x$interactive" = "xy" ]
+if [ "$interactive" = "y" ]
 then
     cont="y"
-    while [ "x$cont" = "xy" ] || [ "x$cont" = "xY" ]
+    while [ "$cont" = "y" ] || [ "$cont" = "Y" ]
     do
         # clean up the variables for each repo
         name=""
@@ -1039,7 +1039,7 @@ config_oecorelayerconf
 get_oecorelocalconf
 config_oecorelocalconf
 
-if [ "x$outputfile" != "x" ]
+if [ -n "$outputfile" ]
 then
     # make sure that the directory for the output file exists
     cd $oebase

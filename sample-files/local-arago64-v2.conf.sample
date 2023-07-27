@@ -166,6 +166,10 @@ RM_OLD_IMAGE = "1"
 # Enable local PR service for binary feeds
 PRSERV_HOST = "localhost:0"
 
+# Enable hash equiv server
+BB_SIGNATURE_HANDLER = "OEEquivHash"
+BB_HASHSERVE = "auto"
+
 # It is recommended to activate "buildhistory" for testing the PR service
 INHERIT += "buildhistory"
 BUILDHISTORY_COMMIT = "1"

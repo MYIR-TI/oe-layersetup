@@ -48,6 +48,8 @@ output="" # variable holding the output to write to outputfile
 scriptdir=$(pwd) # directory of this calling script
 oebase=$(pwd) # variable to hold base directory
 sourcedir="" # directory where repos will be cloned
+build_dir?="build"
+need_repo=0
 builddir="" # directory for builds
 confdir="" # directory for build configuration files
 dldir="" # setting for DL_DIR if -d option is used
@@ -336,7 +338,7 @@ configure_repo() {
     then
         get_repo_name
     fi
-
+		echo "configure_repo $name   $output"
     # Check if the repo with $name was already seen.  Use the , at the end
     # of the grep to avoid matching similar named repos.
     temp=$(printf '%s\n' "$output" | grep -e "^$name,")
@@ -358,9 +360,9 @@ configure_repo() {
                   "" \
                   "cloning repo $name" \
                   "" ;
-
-    clone_repo
-
+		if [[ $need_repo -eq 1 ]];then
+    	clone_repo
+		fi
     if [ -z "$branch" ]
     then
         get_repo_branch
@@ -960,7 +962,7 @@ build_repo_line() {
 ###############
 
 # Parse the input options
-while getopts :irf:o:d:b:h arg
+while getopts :irf:o:d:b:hD:n arg
 do
     case $arg in
         i ) interactive="y";;
@@ -969,6 +971,8 @@ do
         o ) outputfile="$OPTARG";;
         d ) dldir="$OPTARG";;
         b ) oebase="$OPTARG";;
+        D ) build_dir="$OPTARG";;
+        n ) need_repo=1;;
         * ) usage;;
     esac
 done
@@ -992,7 +996,7 @@ cd - || exit 1
 
 # Populate the following variables depending on the value of oebase
 sourcedir="$oebase/sources"
-builddir="$oebase/build"
+builddir="$oebase/${build_dir}"
 confdir="$builddir/conf"
 
 check_input

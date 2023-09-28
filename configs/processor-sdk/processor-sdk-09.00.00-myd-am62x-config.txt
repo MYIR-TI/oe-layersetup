@@ -9,7 +9,7 @@ meta-qt5,https://github.com/MYIR-TI/meta-qt5.git,develop_5.15.7,9285c220f39dca57
 meta-virtualization,https://git.yoctoproject.org/meta-virtualization,kirkstone,b3b3dbc67504e8cd498d6db202ddcf5a9dd26a9d,layers=
 meta-openembedded,https://github.com/MYIR-TI/meta-openembedded.git,develop_2023.04,0e277832e8cf0c06a7905b65045956eea8f39cd2,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 #meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.00.00.006,layers=meta-ti-extras:meta-ti-bsp
-meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_2023.04,7c3cbb7b1102dd8b7e5abce934b216d9533aafeb,layers=meta-myir-extras:meta-myir-bsp
+meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_2023.04,6fa55a536fec1c0a94d03c0663bd14f4e1c7345a,layers=meta-myir-extras:meta-myir-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,96aad3b29aa7a5ee4df5cf617a6336e5218fa9bd,layers=meta-arm:meta-arm-toolchain
 oe-core,https://github.com/MYIR-TI/oe-core.git,develop,f20a12ead2d5890e88e7f4ce149a777de47edc48,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample

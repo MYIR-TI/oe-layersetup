@@ -1,15 +1,15 @@
 # This file takes repo entries in the format
 # repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
 
-bitbake,https://git.openembedded.org/bitbake,2.0,7fc5f990cf8f84f9edd3bf6aa7218c71dabb8d0d
-meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,kirkstone,70a45ea10967e4dd986b5b477179bcc91490f8a7,layers=
-meta-processor-sdk,https://git.ti.com/git/processor-sdk/meta-processor-sdk.git,kirkstone,2807304c6b967c67b6502129d5957e7895c0de6e,layers=
-meta-arago,https://git.yoctoproject.org/meta-arago,kirkstone,3750439eca3436a4f4cdc345215abab60261df74,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos
-meta-qt5,https://github.com/meta-qt5/meta-qt5.git,kirkstone,9285c220f39dca57e91aece38f4ff31e90966281,layers=
+bitbake,https://github.com/MYIR-TI/ti-bitbake.git,develop_2.0.0,7fc5f990cf8f84f9edd3bf6aa7218c71dabb8d0d
+meta-edgeai,https://github.com/MYIR-TI/meta-edgeai.git,develop_kirkstone,70a45ea10967e4dd986b5b477179bcc91490f8a7,layers=
+meta-processor-sdk,https://github.com/MYIR-TI/meta-processor-sdk.git,develop_kirkstone,02a8a582ac4b08ea0fac6be8cf10a0d89defb88a,layers=
+meta-arago,https://github.com/MYIR-TI/meta-arago.git,develop_2023.04,3750439eca3436a4f4cdc345215abab60261df74,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos
+meta-qt5,https://github.com/MYIR-TI/meta-qt5.git,develop_5.15.7,9285c220f39dca57e91aece38f4ff31e90966281,layers=
 meta-virtualization,https://git.yoctoproject.org/meta-virtualization,kirkstone,b3b3dbc67504e8cd498d6db202ddcf5a9dd26a9d,layers=
-meta-openembedded,https://git.openembedded.org/meta-openembedded,kirkstone,4af7c61f6e9b1cf3ac9ea2c5ef0d3441ce77d488,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
+meta-openembedded,https://github.com/MYIR-TI/meta-openembedded.git,develop_2023.04,0e277832e8cf0c06a7905b65045956eea8f39cd2,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 #meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.00.00.006,layers=meta-ti-extras:meta-ti-bsp
-meta-myir,https://git.yoctoproject.org/meta-ti,kirkstone,5b47579455166fe4153e9abceda5c59fc34a3515,layers=meta-myir-extras:meta-myir-bsp
+meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_2023.04,7c3cbb7b1102dd8b7e5abce934b216d9533aafeb,layers=meta-myir-extras:meta-myir-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,96aad3b29aa7a5ee4df5cf617a6336e5218fa9bd,layers=meta-arm:meta-arm-toolchain
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,f20a12ead2d5890e88e7f4ce149a777de47edc48,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample

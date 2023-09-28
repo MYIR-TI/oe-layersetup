@@ -11,7 +11,7 @@ meta-openembedded,https://github.com/MYIR-TI/meta-openembedded.git,develop_2023.
 #meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.00.00.006,layers=meta-ti-extras:meta-ti-bsp
 meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_2023.04,7c3cbb7b1102dd8b7e5abce934b216d9533aafeb,layers=meta-myir-extras:meta-myir-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,96aad3b29aa7a5ee4df5cf617a6336e5218fa9bd,layers=meta-arm:meta-arm-toolchain
-oe-core,https://git.openembedded.org/openembedded-core,kirkstone,f20a12ead2d5890e88e7f4ce149a777de47edc48,layers=meta
+oe-core,https://github.com/MYIR-TI/oe-core.git,develop,f20a12ead2d5890e88e7f4ce149a777de47edc48,layers=meta
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-myd-am62x.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

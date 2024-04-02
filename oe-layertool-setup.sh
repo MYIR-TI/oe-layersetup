@@ -360,7 +360,7 @@ configure_repo() {
                   "" \
                   "cloning repo $name" \
                   "" ;
-		if [[ $need_repo -eq 1 ]];then
+		if [ $need_repo -eq 1 ];then
     	clone_repo
 		fi
     if [ -z "$branch" ]

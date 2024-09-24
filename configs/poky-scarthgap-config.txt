@@ -1,0 +1,14 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,https://git.openembedded.org/bitbake,2.8,HEAD
+meta-yocto,https://git.yoctoproject.org/meta-yocto,scarthgap,HEAD,layers=meta-poky:meta-yocto-bsp
+meta-ti,https://git.yoctoproject.org/meta-ti,scarthgap,HEAD,layers=meta-ti-extras:meta-ti-bsp
+meta-arm,https://git.yoctoproject.org/meta-arm,scarthgap,HEAD,layers=meta-arm:meta-arm-toolchain
+#meta-clang,https://github.com/kraj/meta-clang,scarthgap,HEAD,layers=
+oe-core,https://git.openembedded.org/openembedded-core,scarthgap,HEAD,layers=meta
+meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap,HEAD,layers=meta-arago-extras:meta-arago-test
+
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-poky-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes

@@ -1,7 +1,6 @@
-build
-conf
-sources
-downloads
-bitbake.lock
-pseudodone
+/build
+/sources
+/downloads
+/bitbake.lock
+/pseudodone
 *.dot

@@ -1,0 +1,39 @@
+
+The oe-layersetup repository was created by Texas Instruments back in 2012
+as both a tool for configuring OpenEmbedded builds and the place to house
+the configuration files for rebuilding all of the releases of our software.
+It pre-dates most of the other tools by several years and has been in active
+use by TI's customers since its creation both directly and indirectly as
+we use these configs to drive our build processes for our TISDK packages
+on ti.com.
+
+The oe-layersetup script has some useful features that include:
+
+  - Specifying the git repositories, branch, and commit on the branch you
+    want to configure the build for.
+  - The layers in the repository that you want to include in the build.
+  - A set of templates to use in the creation of the bblayers.conf and
+    the local.conf.
+  - A message of the day feature that can print a block of text to the
+    screen when running the tool against a config file.
+  - Custom local.conf settings that you need to include for the build you
+    are setting up.
+
+With the creation and rise in popularity of some of the newer tools, including
+the upcoming bitbake-setup tool, it is time to broaden our support for our
+build configuration into some of these other newer tools.
+
+To that end, we have migrated all of our configurations into an XML format
+that serves to capture all of the bits of information that the different tools
+need.  Additionally, we have created a Makefile and XSLT files that can
+generate the various configuration files for oe-layersetup, kas, and
+bitbake-setup.
+
+If you want to add a new configuration, you need to create the appropriate XML
+file in src/configs, run make in src, and then commit all of the new files.
+
+- cd src
+- Edit configs/.../config.xml
+- make
+- git status
+

@@ -1,0 +1,9 @@
+<motd>
+    <line>NOTE:</line>
+    <line>NOTE: This config is reserved for CI/CD testing and requires manual intervention to build</line>
+    <line>NOTE:</line>
+    <line>NOTE: A few SRCREVs in the recipes might refer to commits on cicd/next branches for their</line>
+    <line>NOTE: repos.  These recipes will not build correctly without also a change in your local.conf</line>
+    <line>NOTE: to point the recipe to the appropriate cicd/next branch for that recipe.</line>
+    <line>NOTE:</line>
+</motd>

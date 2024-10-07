@@ -23,8 +23,9 @@ OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
 
-LOCALCONF:BRANCH:pn-linux-ti-staging = "ti-linux-6.1.y-cicd"
-LOCALCONF:BRANCH:pn-linux-ti-staging-rt = "ti-rt-linux-6.1.y-cicd"
-LOCALCONF:BRANCH:pn-linux-ti-staging-systest = "ti-linux-6.1.y-cicd"
-LOCALCONF:GIT_BRANCH:pn-ti-k3-secdev = "master-next"
-LOCALCONF:BRANCH:pn-u-boot-ti-staging = "ti-u-boot-2023.04-next"
+LOCALCONF:OVERRIDES:append = ":recipe-${@os.path.basename(d.getVar('FILE'))}"
+LOCALCONF:BRANCH:recipe-linux-ti-staging_6.1.bb = "ti-linux-6.1.y-cicd"
+LOCALCONF:BRANCH:recipe-linux-ti-staging-rt_6.1.bb = "ti-rt-linux-6.1.y-cicd"
+LOCALCONF:BRANCH:recipe-linux-ti-staging-systest_6.1.bb = "ti-linux-6.1.y-cicd"
+LOCALCONF:GIT_BRANCH:recipe-ti-k3-secdev_git.bb = "master-next"
+LOCALCONF:BRANCH:recipe-u-boot-ti-staging_2023.04.bb = "ti-u-boot-2023.04-next"

@@ -10,7 +10,8 @@ meta-openembedded,https://git.openembedded.org/meta-openembedded,kirkstone,402af
 meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.02.00.001,layers=meta-ti-extras:meta-ti-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,b187fb9232ca0a6b5f8f90b4715958546fc41d73,layers=meta-arm:meta-arm-toolchain
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,227b3d4edad31b0d0045f41133271693265240b0,layers=meta
-OECORELAYERCONF=./sample-files/bblayers.conf.sample
 meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,kirkstone,02ce7e60b449c72def00f26afc549034cbd82ba9,layers=
+
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

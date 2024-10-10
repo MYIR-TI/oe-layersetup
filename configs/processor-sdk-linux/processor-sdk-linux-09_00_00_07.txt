@@ -10,9 +10,11 @@ meta-openembedded,https://git.openembedded.org/meta-openembedded,kirkstone,34675
 meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.00.00.007,layers=meta-ti-extras:meta-ti-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,c39bb4ce3b60b73d35c5fb06af012432e70d6b38,layers=meta-arm:meta-arm-toolchain
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,200c2783b3f8546f561382fff6bd5268680d403a,layers=meta
+meta-aws,https://github.com/aws/meta-aws.git,kirkstone,b72cb364f79aa055242e703e284900b23e61facd,layers=
+meta-psdkla,https://git.ti.com/git/jacinto-linux/meta-psdkla.git,kirkstone,09.00.00.07,layers=
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
-meta-aws,https://github.com/aws/meta-aws.git,kirkstone,b72cb364f79aa055242e703e284900b23e61facd,layers=
-meta-psdkla,https://git.ti.com/git/jacinto-linux/meta-psdkla.git,kirkstone,09.00.00.07,layers=
+
 LOCALCONF:DISTRO_FEATURES:append = " virtualization"

@@ -11,6 +11,7 @@ meta-arm,https://git.yoctoproject.org/meta-arm,scarthgap,ecece16871afe6b674d2aaf
 oe-core,https://git.openembedded.org/openembedded-core,scarthgap,bf3fe8c01c5cc00ada22049f4f0abb485e2a626f,layers=meta
 meta-tisdk,https://git.ti.com/git/ti-sdk-linux/meta-tisdk.git,scarthgap,af81e0d81c5efd005bfc0ef749f690f9748c70f6,layers=
 meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,scarthgap,a3b8006957fbc31f8375a5989be7c42b2ba2959b,layers=
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

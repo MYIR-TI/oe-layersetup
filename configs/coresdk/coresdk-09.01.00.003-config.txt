@@ -11,6 +11,7 @@ meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.01.00.003,layers=meta-
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,b187fb9232ca0a6b5f8f90b4715958546fc41d73,layers=meta-arm:meta-arm-toolchain
 #meta-clang,https://github.com/kraj/meta-clang,kirkstone,HEAD,layers=
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,56503e3e80603de3b69acef2f6d32836bc9e5e5d,layers=meta
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

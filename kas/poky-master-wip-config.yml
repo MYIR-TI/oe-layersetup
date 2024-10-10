@@ -1,0 +1,43 @@
+header:
+  version: 17
+  includes:
+    - ./templates/bblayers.conf.yml
+    - ./templates/local-poky-v2.conf.yml
+
+target: core_image_minimal
+
+repos:
+  meta-yocto:
+    url: "https://git.yoctoproject.org/meta-yocto"
+    branch: "master"
+    layers:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-ti:
+    url: "https://git.yoctoproject.org/meta-ti"
+    branch: "master-wip"
+    layers:
+      meta-ti-extras:
+      meta-ti-bsp:
+
+  meta-arm:
+    url: "https://git.yoctoproject.org/meta-arm"
+    branch: "master"
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+  oe-core:
+    url: "https://git.openembedded.org/openembedded-core"
+    branch: "master"
+    layers:
+      meta:
+
+  meta-arago:
+    url: "https://git.yoctoproject.org/meta-arago"
+    branch: "master-wip"
+    layers:
+      meta-arago-extras:
+      meta-arago-test:
+

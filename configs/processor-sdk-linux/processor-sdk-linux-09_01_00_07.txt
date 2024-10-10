@@ -11,8 +11,10 @@ meta-ti,https://git.yoctoproject.org/meta-ti,kirkstone,09.01.00.006,layers=meta-
 meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,b187fb9232ca0a6b5f8f90b4715958546fc41d73,layers=meta-arm:meta-arm-toolchain
 #meta-clang,https://github.com/kraj/meta-clang,kirkstone,HEAD,layers=
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,4bb6373e5f4a1330a063d1afe855d6c24d5461e7,layers=meta
+meta-tisdk,https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk,kirkstone,09.01.00.07,layers=
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
-meta-tisdk,https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk,kirkstone,09.01.00.07,layers=
+
 LOCALCONF:DISTRO_FEATURES:append = " virtualization"

@@ -11,6 +11,7 @@ meta-arm,https://git.yoctoproject.org/meta-arm,kirkstone,c39bb4ce3b60b73d35c5fb0
 oe-core,https://git.openembedded.org/openembedded-core,kirkstone,cef730284b8616ba07c1b062c992c36af730580e,layers=meta
 meta-psdkla,https://git.ti.com/git/jacinto-linux/meta-psdkla.git,kirkstone,9c754ecda6f1019d0126dd4dc163e0ae01772eb0,layers=
 meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,kirkstone,5ad5799ae51dfd335b6dc4a87200fb96e8b86d7e,layers=
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

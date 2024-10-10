@@ -1,0 +1,29 @@
+header:
+  version: 17
+  includes:
+    - ./templates/bblayers.conf.yml
+    - ./templates/local-v2.conf.yml
+
+target: 
+
+repos:
+  meta-ti:
+    url: "https://git.yoctoproject.org/meta-ti"
+    branch: "kirkstone"
+    layers:
+      meta-ti-extras:
+      meta-ti-bsp:
+
+  meta-arm:
+    url: "https://git.yoctoproject.org/meta-arm"
+    branch: "kirkstone"
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+  oe-core:
+    url: "https://git.openembedded.org/openembedded-core"
+    branch: "kirkstone"
+    layers:
+      meta:
+

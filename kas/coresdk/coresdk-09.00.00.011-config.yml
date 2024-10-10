@@ -1,0 +1,62 @@
+header:
+  version: 17
+  includes:
+    - ../templates/bblayers.conf.yml
+    - ../templates/local-arago64-v2.conf.yml
+
+target: tisdk-default-image
+
+repos:
+  meta-arago:
+    url: "https://git.yoctoproject.org/meta-arago"
+    branch: "kirkstone"
+    commit: "09.00.00.011"
+    layers:
+      meta-arago-distro:
+      meta-arago-extras:
+      meta-arago-demos:
+
+  meta-qt5:
+    url: "https://github.com/meta-qt5/meta-qt5.git"
+    branch: "kirkstone"
+    commit: "31930afca79b74e0c788452d71356c1f045e7979"
+
+  meta-virtualization:
+    url: "https://git.yoctoproject.org/meta-virtualization"
+    branch: "kirkstone"
+    commit: "2d8b3cba8ff27c9ec2187a52b6a551fe1dcfaa07"
+
+  meta-openembedded:
+    url: "https://git.openembedded.org/meta-openembedded"
+    branch: "kirkstone"
+    commit: "9c5541f7e18a1fac3b8dea71e1ebb8398d58e6ff"
+    layers:
+      meta-networking:
+      meta-python:
+      meta-oe:
+      meta-gnome:
+      meta-filesystems:
+
+  meta-ti:
+    url: "https://git.yoctoproject.org/meta-ti"
+    branch: "kirkstone"
+    commit: "09.00.00.011"
+    layers:
+      meta-ti-extras:
+      meta-ti-bsp:
+
+  meta-arm:
+    url: "https://git.yoctoproject.org/meta-arm"
+    branch: "kirkstone"
+    commit: "b187fb9232ca0a6b5f8f90b4715958546fc41d73"
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+  oe-core:
+    url: "https://git.openembedded.org/openembedded-core"
+    branch: "kirkstone"
+    commit: "be0bca7eaa08948b6c4eabe63e68a6e14d8dad3b"
+    layers:
+      meta:
+

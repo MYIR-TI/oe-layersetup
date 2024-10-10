@@ -1,0 +1,11 @@
+<bblayers-conf-template name='bblayers.conf'>
+    <line># This template file was created by taking the oe-core/meta/conf/bblayers.conf</line>
+    <line># file and removing the BBLAYERS section at the end.</line>
+    <line></line>
+    <line># LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf</line>
+    <line># changes incompatibly</line>
+    <line>LCONF_VERSION = "5"</line>
+    <line></line>
+    <line>BBPATH = "${TOPDIR}"</line>
+    <line>BBFILES ?= ""</line>
+</bblayers-conf-template>

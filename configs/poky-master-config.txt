@@ -10,5 +10,5 @@ oe-core,https://git.openembedded.org/openembedded-core,master,HEAD,layers=meta
 meta-arago,https://git.yoctoproject.org/meta-arago,master,HEAD,layers=meta-arago-extras:meta-arago-test
 
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
-OECORELOCALCONF=./sample-files/local-poky-v2.conf.sample
+OECORELOCALCONF=./sample-files/local-poky-v3.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

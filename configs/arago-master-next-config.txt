@@ -19,7 +19,9 @@ meta-ti,https://git.yoctoproject.org/meta-ti,master-next,HEAD,layers=meta-ti-ext
 meta-arm,https://git.yoctoproject.org/meta-arm,master,HEAD,layers=meta-arm:meta-arm-toolchain
 meta-clang,https://github.com/kraj/meta-clang,master,HEAD,layers=
 oe-core,https://git.openembedded.org/openembedded-core,master,HEAD,layers=meta
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
-OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64-v3.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
+
 LOCALCONF:OVERRIDES:append = ":recipe-${@os.path.basename(d.getVar('FILE'))}"

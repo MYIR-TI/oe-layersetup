@@ -2,7 +2,7 @@ header:
   version: 17
   includes:
     - ./templates/bblayers.conf.yml
-    - ./templates/local-poky-v2.conf.yml
+    - ./templates/local-poky-v3.conf.yml
 
 target: core_image_minimal
 

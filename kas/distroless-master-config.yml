@@ -2,7 +2,7 @@ header:
   version: 17
   includes:
     - ./templates/bblayers.conf.yml
-    - ./templates/local-v2.conf.yml
+    - ./templates/local-v3.conf.yml
 
 target: 
 

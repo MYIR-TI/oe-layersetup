@@ -1,0 +1,176 @@
+<local-conf-template name='local-poky-v3.conf'>
+    <line># CONF_VERSION is increased each time build/conf/ changes incompatibly</line>
+    <line>CONF_VERSION = "2"</line>
+    <line></line>
+    <line>#</line>
+    <line># Where to place downloads</line>
+    <line>#</line>
+    <line># During a first build the system will download many different source code</line>
+    <line># tarballs from various upstream projects. This can take a while, particularly</line>
+    <line># if your network connection is slow. These are all stored in DL_DIR. When</line>
+    <line># wiping and rebuilding you can preserve this directory to speed up this part</line>
+    <line># of subsequent builds. This directory is safe to share between multiple builds</line>
+    <line># on the same machine too.</line>
+    <line>DL_DIR = "${TOPDIR}/downloads"</line>
+    <line></line>
+    <line>#</line>
+    <line># Where to place shared-state files</line>
+    <line>#</line>
+    <line># BitBake has the capability to accelerate builds based on previously built</line>
+    <line># output. This is done using "shared state" files which can be thought of as</line>
+    <line># cache objects and this option determines where those files are placed.</line>
+    <line>#</line>
+    <line># You can wipe out TMPDIR leaving this directory intact and the build would</line>
+    <line># regenerate from these files if no changes were made to the configuration.</line>
+    <line># If changes were made to the configuration, only shared state files where the</line>
+    <line># state was still valid would be used (done using checksums).</line>
+    <line>SSTATE_DIR = "${TOPDIR}/build/sstate-cache"</line>
+    <line></line>
+    <line>#</line>
+    <line># Shared-state files from other locations</line>
+    <line>#</line>
+    <line># As mentioned above, shared state files are prebuilt cache data objects which</line>
+    <line># can be used to accelerate build time. This variable can be used to configure</line>
+    <line># the system to search other mirror locations for these objects before it</line>
+    <line># builds the data itself.</line>
+    <line>#</line>
+    <line># This can be a filesystem directory, or a remote url such as http or ftp.</line>
+    <line># These would contain the sstate-cache results from previous builds (possibly</line>
+    <line># from other machines). This variable works like fetcher MIRRORS/PREMIRRORS</line>
+    <line># and points to the cache locations to check for the shared objects.</line>
+    <line>#SSTATE_MIRRORS ?= "\</line>
+    <line>#file://.* http://someserver.tld/share/sstate/ \n \</line>
+    <line>#file://.* file:///some/local/dir/sstate/"</line>
+    <line></line>
+    <line>#</line>
+    <line># Where to place the build output</line>
+    <line>#</line>
+    <line># This option specifies where the bulk of the building work should be done and</line>
+    <line># where BitBake should place its temporary files and output. Keep in mind that</line>
+    <line># this includes the extraction and compilation of many applications and the toolchain</line>
+    <line># which can use Gigabytes of hard disk space.</line>
+    <line>TMPDIR = "${TOPDIR}/build/poky-tmp"</line>
+    <line></line>
+    <line>#</line>
+    <line># Machine Selection</line>
+    <line>#</line>
+    <line># You need to select a specific machine to target the build with. There are a selection</line>
+    <line># of emulated machines available which can boot and run in the QEMU emulator:</line>
+    <line>#</line>
+    <line>#MACHINE ?= "arago"</line>
+    <line></line>
+    <line>#</line>
+    <line># Package Management configuration</line>
+    <line>#</line>
+    <line># This variable lists which packaging formats to enable. Multiple package backends </line>
+    <line># can be enabled at once and the first item listed in the variable will be used </line>
+    <line># to generate the root filesystems.</line>
+    <line># Options are:</line>
+    <line>#  - 'package_deb' for debian style deb files</line>
+    <line>#  - 'package_ipk' for ipk files are used by opkg (a debian style embedded package manager)</line>
+    <line>#  - 'package_rpm' for rpm style packages</line>
+    <line># E.g.: PACKAGE_CLASSES ?= "package_rpm package_deb package_ipk"</line>
+    <line># We default to ipk:</line>
+    <line>PACKAGE_CLASSES ?= "package_ipk"</line>
+    <line></line>
+    <line>#</line>
+    <line># SDK/ADT target architecture</line>
+    <line>#</line>
+    <line># This variable specified the architecture to build SDK/ADT items for and means</line>
+    <line># you can build the SDK packages for architectures other than the machine you are </line>
+    <line># running the build on (i.e. building i686 packages on an x86_64 host._</line>
+    <line># Supported values are i686 and x86_64</line>
+    <line>SDKMACHINE ?= "x86_64"</line>
+    <line></line>
+    <line>#</line>
+    <line># Extra image configuration defaults</line>
+    <line>#</line>
+    <line># The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated </line>
+    <line># images. Some of these options are added to certain image types automatically. The</line>
+    <line># variable can contain the following options:</line>
+    <line>#  "dbg-pkgs"       - add -dbg packages for all installed packages</line>
+    <line>#                     (adds symbol information for debugging/profiling)</line>
+    <line>#  "dev-pkgs"       - add -dev packages for all installed packages</line>
+    <line>#                     (useful if you want to develop against libs in the image)</line>
+    <line>#  "tools-sdk"      - add development tools (gcc, make, pkgconfig etc.)</line>
+    <line>#  "tools-debug"    - add debugging tools (gdb, strace)</line>
+    <line>#  "tools-profile"  - add profiling tools (oprofile, exmap, lttng valgrind (x86 only))</line>
+    <line>#  "tools-testapps" - add useful testing tools (ts_print, aplay, arecord etc.)</line>
+    <line>#  "empty-root-password"  - the root user has no password set</line>
+    <line>#  "allow-empty-password" - users can have an empty password</line>
+    <line>#  "allow-root-login"     - the root user can login</line>
+    <line>#  "post-install-logging" - log the output of postinstall scriptlets</line>
+    <line># There are other application targets that can be used here too, see</line>
+    <line># meta/classes/image.bbclass and meta/classes/core-image.bbclass for more details.</line>
+    <line># We default to enabling the empty root login settings for debugging/testing.</line>
+    <line>EXTRA_IMAGE_FEATURES = "empty-root-password allow-empty-password allow-root-login post-install-logging"</line>
+    <line></line>
+    <line>#</line>
+    <line># Additional image features</line>
+    <line>#</line>
+    <line># The following is a list of additional classes to use when building images which</line>
+    <line># enable extra features. Some available options which can be included in this variable </line>
+    <line># are:</line>
+    <line>#   - 'buildstats' collect build statistics</line>
+    <line>#   - 'image-swab' to perform host system intrusion detection</line>
+    <line># NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended</line>
+    <line>USER_CLASSES ?= "buildstats"</line>
+    <line></line>
+    <line># By default disable interactive patch resolution (tasks will just fail instead):</line>
+    <line>PATCHRESOLVE = "noop"</line>
+    <line></line>
+    <line># By default the machine configuration file sets the IMAGE_FSTYPES.  But if you</line>
+    <line># would like to add additional file system types you can uncomment the</line>
+    <line># following line and add the additional IMAGE_FSTYPES you want created</line>
+    <line># as part of the build flow.  Some common types are listed below and you</line>
+    <line># can remove the ones you do not want.</line>
+    <line># IMAGE_FSTYPES += "jffs2 cramfs ext2.gz ext3.gz squashfs ubi tar.gz tar.bz2 cpio"</line>
+    <line></line>
+    <line>#</line>
+    <line># Parallelism Options</line>
+    <line>#</line>
+    <line># These two options control how much parallelism BitBake should use. The first </line>
+    <line># option determines how many tasks bitbake should run in parallel:</line>
+    <line>#</line>
+    <line># BB_NUMBER_THREADS ?= "1"</line>
+    <line># </line>
+    <line># The second option controls how many processes make should run in parallel when</line>
+    <line># running compile tasks:</line>
+    <line>#</line>
+    <line># PARALLEL_MAKE ?= "-j 1"</line>
+    <line>#</line>
+    <line># For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would</line>
+    <line># be appropriate for example</line>
+    <line>#</line>
+    <line># NOTE: By default, bitbake will choose the number of processeors on your host</line>
+    <line># so you should not need to set this unless you are wanting to lower the number</line>
+    <line># allowed.</line>
+    <line>#</line>
+    <line></line>
+    <line>DISTRO   = "poky"</line>
+    <line></line>
+    <line># Set terminal types by default it expects gnome-terminal</line>
+    <line># but we chose xterm</line>
+    <line>TERMCMD = "${XTERM_TERMCMD}"</line>
+    <line>TERMCMDRUN = "${XTERM_TERMCMDRUN}"</line>
+    <line></line>
+    <line># Don't generate the mirror tarball for SCM repos, the snapshot is enough</line>
+    <line>BB_GENERATE_MIRROR_TARBALLS = "0"</line>
+    <line></line>
+    <line># Uncomment this to remove work directory after packaging to save disk space</line>
+    <line>#INHERIT += "rm_work"</line>
+    <line></line>
+    <line># Keep one set of images by default</line>
+    <line>RM_OLD_IMAGE = "1"</line>
+    <line></line>
+    <line># Enable local PR service for binary feeds</line>
+    <line>PRSERV_HOST = "localhost:0"</line>
+    <line></line>
+    <line># Enable hash equiv server</line>
+    <line>BB_SIGNATURE_HANDLER = "OEEquivHash"</line>
+    <line>BB_HASHSERVE = "auto"</line>
+    <line></line>
+    <line># It is recommended to activate "buildhistory" for testing the PR service</line>
+    <line>INHERIT += "buildhistory"</line>
+    <line>BUILDHISTORY_COMMIT = "1"</line>
+</local-conf-template>

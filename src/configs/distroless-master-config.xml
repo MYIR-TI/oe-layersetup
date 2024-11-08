@@ -3,7 +3,7 @@
     <description>Distroless reference for master</description>
 
     <xi:include href='../templates/bblayers.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
-    <xi:include href='../templates/local-v2.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../templates/local-v3.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
 
     <bitbake url='https://git.openembedded.org/bitbake' branch='master' commit='HEAD'/>
 

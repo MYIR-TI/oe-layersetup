@@ -22,7 +22,7 @@
                 <layer>meta-chromium</layer>
             </layers>
         </repo>
-        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='master' commit='HEAD' disabled='true'>
+        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='master' commit='HEAD'>
             <layers/>
         </repo>
         <repo name='meta-qt5' url='https://github.com/meta-qt5/meta-qt5.git' branch='master' commit='HEAD'>
@@ -62,6 +62,10 @@
             </layers>
         </repo>
     </repos>
+
+    <local-conf>
+        <line>DISTRO_FEATURES:append = " acl xattr pam selinux"</line>
+    </local-conf>
 
     <tools>
         <tool type='oe-layersetup'>

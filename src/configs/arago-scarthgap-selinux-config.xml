@@ -1,15 +1,15 @@
 <?xml version='1.0'?>
 <config>
-    <description>Arago reference distribution for master</description>
+    <description>Arago reference distribution for scarthgap</description>
 
     <xi:include href='../common/targets_arago.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/bblayers.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
-    <xi:include href='../templates/local-arago64-v3.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../templates/local-arago64-v2.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
 
-    <bitbake url='https://git.openembedded.org/bitbake' branch='master' commit='HEAD'/>
+    <bitbake url='https://git.openembedded.org/bitbake' branch='2.8' commit='HEAD'/>
 
     <repos>
-        <repo name='meta-arago' url='https://git.yoctoproject.org/meta-arago' branch='master' commit='HEAD'>
+        <repo name='meta-arago' url='https://git.yoctoproject.org/meta-arago' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>meta-arago-distro</layer>
                 <layer>meta-arago-extras</layer>
@@ -17,21 +17,21 @@
                 <layer>meta-arago-test</layer>
             </layers>
         </repo>
-        <repo name='meta-browser' url='https://github.com/OSSystems/meta-browser.git' branch='master' commit='HEAD' disabled='true'>
+        <repo name='meta-browser' url='https://github.com/OSSystems/meta-browser.git' branch='master' commit='1ed2254d72a4c25879014c98be287a7e3e22904c' disabled='true'>
             <layers>
                 <layer>meta-chromium</layer>
             </layers>
         </repo>
-        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='master' commit='HEAD' disabled='true'>
+        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='scarthgap' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='meta-qt5' url='https://github.com/meta-qt5/meta-qt5.git' branch='master' commit='HEAD'>
+        <repo name='meta-qt5' url='https://github.com/meta-qt5/meta-qt5.git' branch='scarthgap' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='meta-virtualization' url='https://git.yoctoproject.org/meta-virtualization' branch='master' commit='HEAD'>
+        <repo name='meta-virtualization' url='https://git.yoctoproject.org/meta-virtualization' branch='scarthgap' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='meta-openembedded' url='https://git.openembedded.org/meta-openembedded' branch='master' commit='HEAD'>
+        <repo name='meta-openembedded' url='https://git.openembedded.org/meta-openembedded' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>meta-networking</layer>
                 <layer>meta-python</layer>
@@ -41,27 +41,31 @@
                 <layer>meta-multimedia</layer>
             </layers>
         </repo>
-        <repo name='meta-ti' url='https://git.yoctoproject.org/meta-ti' branch='master' commit='HEAD'>
+        <repo name='meta-ti' url='https://git.yoctoproject.org/meta-ti' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>meta-ti-extras</layer>
                 <layer>meta-ti-bsp</layer>
             </layers>
         </repo>
-        <repo name='meta-arm' url='https://git.yoctoproject.org/meta-arm' branch='master' commit='HEAD'>
+        <repo name='meta-arm' url='https://git.yoctoproject.org/meta-arm' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>meta-arm</layer>
                 <layer>meta-arm-toolchain</layer>
             </layers>
         </repo>
-        <repo name='meta-clang' url='https://github.com/kraj/meta-clang' branch='master' commit='HEAD'>
+        <repo name='meta-clang' url='https://github.com/kraj/meta-clang' branch='scarthgap' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='oe-core' url='https://git.openembedded.org/openembedded-core' branch='master' commit='HEAD'>
+        <repo name='oe-core' url='https://git.openembedded.org/openembedded-core' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>meta</layer>
             </layers>
         </repo>
     </repos>
+
+    <local-conf>
+        <line>DISTRO_FEATURES:append = " acl xattr pam selinux"</line>
+    </local-conf>
 
     <tools>
         <tool type='oe-layersetup'>

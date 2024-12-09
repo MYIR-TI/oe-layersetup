@@ -61,8 +61,8 @@ TMPDIR = "${TOPDIR}/build/arago-tmp"
 #
 # Package Management configuration
 #
-# This variable lists which packaging formats to enable. Multiple package backends 
-# can be enabled at once and the first item listed in the variable will be used 
+# This variable lists which packaging formats to enable. Multiple package backends
+# can be enabled at once and the first item listed in the variable will be used
 # to generate the root filesystems.
 # Options are:
 #  - 'package_deb' for debian style deb files
@@ -76,7 +76,7 @@ PACKAGE_CLASSES ?= "package_ipk"
 # SDK/ADT target architecture
 #
 # This variable specified the architecture to build SDK/ADT items for and means
-# you can build the SDK packages for architectures other than the machine you are 
+# you can build the SDK packages for architectures other than the machine you are
 # running the build on (i.e. building i686 packages on an x86_64 host._
 # Supported values are i686 and x86_64
 SDKMACHINE ?= "i686"
@@ -84,7 +84,7 @@ SDKMACHINE ?= "i686"
 #
 # Extra image configuration defaults
 #
-# The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated 
+# The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated
 # images. Some of these options are added to certain image types automatically. The
 # variable can contain the following options:
 #  "dbg-pkgs"       - add -dbg packages for all installed packages
@@ -106,7 +106,7 @@ EXTRA_IMAGE_FEATURES = "debug-tweaks"
 # Additional image features
 #
 # The following is a list of additional classes to use when building images which
-# enable extra features. Some available options which can be included in this variable 
+# enable extra features. Some available options which can be included in this variable
 # are:
 #   - 'buildstats' collect build statistics
 #   - 'image-prelink' in order to prelink the filesystem image
@@ -128,11 +128,11 @@ PATCHRESOLVE = "noop"
 #
 # Parallelism Options
 #
-# These two options control how much parallelism BitBake should use. The first 
+# These two options control how much parallelism BitBake should use. The first
 # option determines how many tasks bitbake should run in parallel:
 #
 # BB_NUMBER_THREADS ?= "1"
-# 
+#
 # The second option controls how many processes make should run in parallel when
 # running compile tasks:
 #

@@ -65,8 +65,8 @@
     <line>#</line>
     <line># Package Management configuration</line>
     <line>#</line>
-    <line># This variable lists which packaging formats to enable. Multiple package backends </line>
-    <line># can be enabled at once and the first item listed in the variable will be used </line>
+    <line># This variable lists which packaging formats to enable. Multiple package backends</line>
+    <line># can be enabled at once and the first item listed in the variable will be used</line>
     <line># to generate the root filesystems.</line>
     <line># Options are:</line>
     <line>#  - 'package_deb' for debian style deb files</line>
@@ -80,7 +80,7 @@
     <line># SDK/ADT target architecture</line>
     <line>#</line>
     <line># This variable specified the architecture to build SDK/ADT items for and means</line>
-    <line># you can build the SDK packages for architectures other than the machine you are </line>
+    <line># you can build the SDK packages for architectures other than the machine you are</line>
     <line># running the build on (i.e. building i686 packages on an x86_64 host._</line>
     <line># Supported values are i686 and x86_64</line>
     <line>SDKMACHINE ?= "x86_64"</line>
@@ -88,7 +88,7 @@
     <line>#</line>
     <line># Extra image configuration defaults</line>
     <line>#</line>
-    <line># The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated </line>
+    <line># The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated</line>
     <line># images. Some of these options are added to certain image types automatically. The</line>
     <line># variable can contain the following options:</line>
     <line>#  "dbg-pkgs"       - add -dbg packages for all installed packages</line>
@@ -110,7 +110,7 @@
     <line># Additional image features</line>
     <line>#</line>
     <line># The following is a list of additional classes to use when building images which</line>
-    <line># enable extra features. Some available options which can be included in this variable </line>
+    <line># enable extra features. Some available options which can be included in this variable</line>
     <line># are:</line>
     <line>#   - 'buildstats' collect build statistics</line>
     <line>#   - 'image-swab' to perform host system intrusion detection</line>
@@ -130,11 +130,11 @@
     <line>#</line>
     <line># Parallelism Options</line>
     <line>#</line>
-    <line># These two options control how much parallelism BitBake should use. The first </line>
+    <line># These two options control how much parallelism BitBake should use. The first</line>
     <line># option determines how many tasks bitbake should run in parallel:</line>
     <line>#</line>
     <line># BB_NUMBER_THREADS ?= "1"</line>
-    <line># </line>
+    <line>#</line>
     <line># The second option controls how many processes make should run in parallel when</line>
     <line># running compile tasks:</line>
     <line>#</line>

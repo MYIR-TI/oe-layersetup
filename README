@@ -1,4 +1,7 @@
 
+History
+===============================================================================
+
 The oe-layersetup repository was created by Texas Instruments back in 2012
 as both a tool for configuring OpenEmbedded builds and the place to house
 the configuration files for rebuilding all of the releases of our software.
@@ -29,11 +32,55 @@ need.  Additionally, we have created a Makefile and XSLT files that can
 generate the various configuration files for oe-layersetup, kas, and
 bitbake-setup.
 
+
+Adding New Configurations
+===============================================================================
+
+There are only two tool requirements for adding a new config:
+  - make
+  - xsltproc
+
+Both tools should be readily available on all distributions, but you might need
+to install the packages.
+
+There are two methods for adding a new configuration: Adding XML directly, or
+converting an oe-layersetup config.
+
+
+Adding XML directly
+-------------------
+
 If you want to add a new configuration, you need to create the appropriate XML
 file in src/configs, run make in src, and then commit all of the new files.
 
 - cd src
 - Edit configs/.../config.xml
+- make
+- git status
+
+
+Converting oe-layersetup config
+-------------------------------
+
+If the flow you are working with already is using a modified oe-layersetup
+config, or generates a locked down oe-layersetup config as an artifact, then
+you can run the convert.pl script to translate that file into the XML config.
+
+./src/bin/convert.pl --input <file> --config-name <name>
+
+The <file> is simply the file you want to import, and the <name> is the name
+of the config to import to.  The name should also include any subdirectories
+under configs where the file should go.  For example:
+
+./src/bin/convert.pl \
+        --input saved-config.txt \
+        --config-name coresdk/coresdk-10.01.08-config
+
+This will create the XML file: src/configs/coresdk/coresdk-10.01.08-config.xml
+
+From there you run the same steps as if you had added the XML config yourself:
+
+- cd src
 - make
 - git status
 

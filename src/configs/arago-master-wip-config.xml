@@ -44,6 +44,7 @@
         <repo name='meta-ti' url='https://git.yoctoproject.org/meta-ti' branch='master-wip' commit='HEAD'>
             <layers>
                 <layer>meta-ti-extras</layer>
+                <layer>meta-beagle</layer>
                 <layer>meta-ti-bsp</layer>
             </layers>
         </repo>

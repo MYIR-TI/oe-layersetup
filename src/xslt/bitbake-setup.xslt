@@ -29,7 +29,7 @@
             "uri": "https://git.ti.com/git/arago-project/oe-layersetup.git"
           }
         },
-        "rev": "wip"
+        "rev": "master"
       },
       "path": "oe-layersetup"
     },

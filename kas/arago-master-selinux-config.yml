@@ -44,6 +44,7 @@ repos:
     branch: "master"
     layers:
       meta-ti-extras:
+      meta-beagle:
       meta-ti-bsp:
 
   meta-arm:

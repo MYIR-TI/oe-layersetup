@@ -47,6 +47,7 @@ repos:
     branch: "scarthgap"
     layers:
       meta-ti-extras:
+      meta-beagle:
       meta-ti-bsp:
 
   meta-arm:

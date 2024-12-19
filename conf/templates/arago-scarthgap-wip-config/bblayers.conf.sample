@@ -22,6 +22,7 @@ BBLAYERS ?= " \
     ##OEROOT##/../meta-openembedded/meta-filesystems
     ##OEROOT##/../meta-openembedded/meta-multimedia
     ##OEROOT##/../meta-ti/meta-ti-extras
+    ##OEROOT##/../meta-ti/meta-beagle
     ##OEROOT##/../meta-ti/meta-ti-bsp
     ##OEROOT##/../meta-arm/meta-arm
     ##OEROOT##/../meta-arm/meta-arm-toolchain

@@ -1,0 +1,21 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,https://git.openembedded.org/bitbake,2.8,377eba2361850adfb8ce7e761ef9c76be287f88c
+meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap,b6349e47760397add572cc27468e0f30b40474c1,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos:meta-arago-test
+meta-browser,https://github.com/OSSystems/meta-browser.git,master,1ed2254d72a4c25879014c98be287a7e3e22904c,layers=meta-chromium
+meta-qt5,https://github.com/meta-qt5/meta-qt5.git,scarthgap,eb828418264a49b8d00035cb3d7b12fcea3be801,layers=
+meta-virtualization,https://git.yoctoproject.org/meta-virtualization,scarthgap,7c78f4ef96020b702c027d179895c9f97179b4fc,layers=
+meta-openembedded,https://git.openembedded.org/meta-openembedded,scarthgap,2e3126c9c16bb3df0560f6b3896d01539a3bfad7,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
+meta-ti,https://git.yoctoproject.org/meta-ti,scarthgap,f06324bc1649e4f437686560cbd66f973ba920f5,layers=meta-ti-extras:meta-ti-bsp
+meta-arm,https://git.yoctoproject.org/meta-arm,scarthgap,7088279c0ab00c7dabefdd4544951b4746b48476,layers=meta-arm:meta-arm-toolchain
+meta-clang,https://github.com/kraj/meta-clang,scarthgap,9fbfa9db33131abdf3870a94f00199eb53e276e5,layers=
+oe-core,https://git.openembedded.org/openembedded-core,scarthgap,a051a066da2874b95680d0353dfa18c1d56b2670,layers=meta
+meta-tisdk,https://git.ti.com/git/ti-sdk-linux/meta-tisdk.git,scarthgap,d73e2e4482d812c1eb456eaaca7bd50d62361de1,layers=
+
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes
+
+LOCALCONF:DISTRO_FEATURES:append = " virtualization"
+LOCALCONF:DISTROOVERRIDES:append = ":foundational"

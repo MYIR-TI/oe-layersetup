@@ -14,7 +14,6 @@
             <layers>
                 <layer>meta-arago-distro</layer>
                 <layer>meta-arago-extras</layer>
-                <layer>meta-arago-demos</layer>
                 <layer>meta-arago-test</layer>
             </layers>
         </repo>

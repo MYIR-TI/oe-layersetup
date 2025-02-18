@@ -11,7 +11,6 @@ BBFILES ?= ""
 BBLAYERS ?= " \
     ##OEROOT##/../meta-arago/meta-arago-distro
     ##OEROOT##/../meta-arago/meta-arago-extras
-    ##OEROOT##/../meta-arago/meta-arago-demos
     ##OEROOT##/../meta-arago/meta-arago-test
     ##OEROOT##/../meta-qt5
     ##OEROOT##/../meta-virtualization

@@ -10,7 +10,7 @@ MOTD: NOTE: to point the recipe to the appropriate cicd/next branch for that rec
 MOTD: NOTE:
 
 bitbake,https://git.openembedded.org/bitbake,2.8,HEAD
-meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap-next,HEAD,layers=meta-arago-distro:meta-arago-extras:meta-arago-demos:meta-arago-test
+meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap-next,HEAD,layers=meta-arago-distro:meta-arago-extras:meta-arago-test
 #meta-browser,https://github.com/OSSystems/meta-browser.git,master,68e8cbf51ac46c8c1b3923ee2b20e27ba9d3faa4,layers=meta-chromium
 #meta-selinux,https://git.yoctoproject.org/meta-selinux,scarthgap,HEAD,layers=
 meta-qt5,https://github.com/meta-qt5/meta-qt5.git,scarthgap,HEAD,layers=
@@ -26,12 +26,13 @@ OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
 
 LOCALCONF:OVERRIDES:append = ":recipe-${@os.path.basename(d.getVar('FILE'))}"
-LOCALCONF:BRANCH:recipe-ltp-ddt_20250130.bb = "cicd"
+LOCALCONF:BRANCH:recipe-ltp-ddt_20240129.bb = "cicd"
 LOCALCONF:BRANCH:recipe-cadence-mhdp-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-cnm-wave-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-goodix-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-linux-ti-staging_6.12.bb = "ti-linux-6.12.y-cicd"
 LOCALCONF:BRANCH:recipe-linux-ti-staging-rt_6.12.bb = "ti-linux-6.12.y-cicd"
+LOCALCONF:BRANCH:recipe-linux-ti-staging-systest_6.12.bb = "ti-linux-6.12.y-cicd"
 LOCALCONF:BRANCH:recipe-prueth-fw_5.6.15.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-pruhsr-fw_2.17.25.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-pruprp-fw_2.17.25.bb = "ti-linux-firmware-next"

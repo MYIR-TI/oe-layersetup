@@ -22,9 +22,9 @@ repos:
     layers:
       meta-chromium:
 
-  meta-qt5:
-    url: "https://github.com/meta-qt5/meta-qt5.git"
-    branch: "scarthgap"
+  meta-qt6:
+    url: "https://code.qt.io/yocto/meta-qt6.git"
+    branch: "6.9"
 
   meta-virtualization:
     url: "https://git.yoctoproject.org/meta-virtualization"

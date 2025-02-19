@@ -26,13 +26,12 @@ OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
 
 LOCALCONF:OVERRIDES:append = ":recipe-${@os.path.basename(d.getVar('FILE'))}"
-LOCALCONF:BRANCH:recipe-ltp-ddt_20240129.bb = "cicd"
+LOCALCONF:BRANCH:recipe-ltp-ddt_20250130.bb = "cicd"
 LOCALCONF:BRANCH:recipe-cadence-mhdp-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-cnm-wave-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-goodix-fw_git.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-linux-ti-staging_6.12.bb = "ti-linux-6.12.y-cicd"
 LOCALCONF:BRANCH:recipe-linux-ti-staging-rt_6.12.bb = "ti-linux-6.12.y-cicd"
-LOCALCONF:BRANCH:recipe-linux-ti-staging-systest_6.12.bb = "ti-linux-6.12.y-cicd"
 LOCALCONF:BRANCH:recipe-prueth-fw_5.6.15.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-pruhsr-fw_2.17.25.bb = "ti-linux-firmware-next"
 LOCALCONF:BRANCH:recipe-pruprp-fw_2.17.25.bb = "ti-linux-firmware-next"

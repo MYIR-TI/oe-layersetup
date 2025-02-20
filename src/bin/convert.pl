@@ -501,7 +501,7 @@ sub convert_local_conf_template
     {
         chomp($lpLine);
 
-        $lpLine =~ s/OEBASE/TOPDIR/;
+        $lpLine =~ s/OEBASE/TOPDIR\/\.\./;
         $lpLine =~ s/^MACHINE/#MACHINE/;
 
         $lpLine =~ s/&/&amp;/g;

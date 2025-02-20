@@ -10,7 +10,7 @@ CONF_VERSION = "2"
 # wiping and rebuilding you can preserve this directory to speed up this part
 # of subsequent builds. This directory is safe to share between multiple builds
 # on the same machine too.
-DL_DIR = "${TOPDIR}/downloads"
+DL_DIR = "${TOPDIR}/../downloads"
 
 #
 # Where to place shared-state files
@@ -23,7 +23,7 @@ DL_DIR = "${TOPDIR}/downloads"
 # regenerate from these files if no changes were made to the configuration.
 # If changes were made to the configuration, only shared state files where the
 # state was still valid would be used (done using checksums).
-SSTATE_DIR = "${TOPDIR}/build/sstate-cache"
+SSTATE_DIR = "${TOPDIR}/sstate-cache"
 
 #
 # Shared-state files from other locations

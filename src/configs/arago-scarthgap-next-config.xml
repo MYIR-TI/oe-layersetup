@@ -66,13 +66,12 @@
 
     <local-conf>
         <line>OVERRIDES:append = ":recipe-${@os.path.basename(d.getVar('FILE'))}"</line>
-        <line>BRANCH:recipe-ltp-ddt_20240129.bb = "cicd"</line>
+        <line>BRANCH:recipe-ltp-ddt_20250130.bb = "cicd"</line>
         <line>BRANCH:recipe-cadence-mhdp-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-cnm-wave-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-goodix-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-linux-ti-staging_6.12.bb = "ti-linux-6.12.y-cicd"</line>
         <line>BRANCH:recipe-linux-ti-staging-rt_6.12.bb = "ti-linux-6.12.y-cicd"</line>
-        <line>BRANCH:recipe-linux-ti-staging-systest_6.12.bb = "ti-linux-6.12.y-cicd"</line>
         <line>BRANCH:recipe-prueth-fw_5.6.15.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-pruhsr-fw_2.17.25.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-pruprp-fw_2.17.25.bb = "ti-linux-firmware-next"</line>

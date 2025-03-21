@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-let glMaxRetries=5
-let glCurrRetry=1
-let glDelay=15
-let glExitCode=0
+glMaxRetries=5
+glCurrRetry=1
+glDelay=15
+glExitCode=0
 
 while [ $glMaxRetries -ge $glCurrRetry ]; do
 
@@ -15,16 +15,16 @@ while [ $glMaxRetries -ge $glCurrRetry ]; do
         exit
     fi
 
-    let glSleep=$glDelay*$glCurrRetry
+    glSleep=$((glDelay*glCurrRetry))
 
-    let glRemainingRetries=$glMaxRetries-$glCurrRetry
+    glRemainingRetries=$((glMaxRetries-glCurrRetry))
 
     if [ $glRemainingRetries -gt 0 ]; then
         echo "git failed... remaining attempts: $glRemainingRetries    sleeping $glSleep seconds"
         sleep $glSleep
     fi
 
-    let glCurrRetry=$glCurrRetry+1
+    glCurrRetry=$((glCurrRetry+1))
 
 done
 

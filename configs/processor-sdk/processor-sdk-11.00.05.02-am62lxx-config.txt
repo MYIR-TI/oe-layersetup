@@ -4,8 +4,6 @@
 bitbake,https://git.openembedded.org/bitbake,2.8,f6635b32ab553e812fe7c05998ef05834fccd0f3
 meta-tisdk,https://github.com/TexasInstruments/meta-tisdk.git,scarthgap,11.00.05.02,layers=
 meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap,11.00.05,layers=meta-arago-distro:meta-arago-extras:meta-arago-test
-#meta-selinux,https://git.yoctoproject.org/meta-selinux,scarthgap,20f84653a1e3d5fce3985cacf3d604d24eb323be,layers=
-#meta-qt6,https://code.qt.io/yocto/meta-qt6.git,6.9,4982bb1819e3493f976a1ef867dbb0bd61272fff,layers=
 meta-virtualization,https://git.yoctoproject.org/meta-virtualization,scarthgap,79673f5c67b022e7aadeb231872470295e5b9188,layers=
 meta-openembedded,https://git.openembedded.org/meta-openembedded,scarthgap,4f11a12b2352bbdfafb6b7d956bf424af4992977,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 meta-ti,https://git.yoctoproject.org/meta-ti,scarthgap,11.00.05,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
@@ -16,5 +14,3 @@ oe-core,https://git.openembedded.org/openembedded-core,scarthgap,fc46705cc629a15
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
-
-#LOCALCONF:DISTRO_FEATURES:append = " acl xattr pam selinux"

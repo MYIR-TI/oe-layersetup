@@ -78,6 +78,7 @@
         <line>BRANCH:recipe-prusw-fw_3.2.9.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-dm-fw.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-eth-fw.bb = "ti-linux-firmware-next"</line>
+        <line>BRANCH:recipe-ti-hsm-demo-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-rtos-firmware.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-sci-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-u-boot-ti-staging_2025.01.bb = "ti-u-boot-2025.01-next"</line>

@@ -68,6 +68,17 @@
       },
       "path": "meta-openembedded"
     },
+    "meta-lts-mixins": {
+      "git-remote": {
+        "remotes": {
+          "origin": {
+            "uri": "https://git.yoctoproject.org/meta-lts-mixins"
+          }
+        },
+        "rev": "scarthgap/rust"
+      },
+      "path": "meta-lts-mixins"
+    },
     "meta-ti": {
       "git-remote": {
         "remotes": {

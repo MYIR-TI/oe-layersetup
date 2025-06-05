@@ -18,7 +18,7 @@ repos:
   meta-browser:
     url: "https://github.com/OSSystems/meta-browser.git"
     branch: "master"
-    commit: "68e8cbf51ac46c8c1b3923ee2b20e27ba9d3faa4"
+    commit: "27ca52f635a31f5f9762813a8527dd31323549b7"
     layers:
       meta-chromium:
 

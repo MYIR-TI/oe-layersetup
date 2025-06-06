@@ -12,6 +12,7 @@ meta-clang,https://github.com/kraj/meta-clang,scarthgap,eaa08939eaec9f620b14742f
 oe-core,https://git.openembedded.org/openembedded-core,scarthgap,b214cc84a922f7a3fb7ebbc501189ce25e8bd2bd,layers=meta
 meta-tisdk,https://git.ti.com/git/ti-sdk-linux/meta-tisdk.git,scarthgap,1f96dccc01f10c73295e0bac6a15a97d3d4562fd,layers=meta-ti-foundational
 meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,scarthgap,81d1b80b2a314814c6d900e82ea2da93eee3f57d,layers=
+
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes

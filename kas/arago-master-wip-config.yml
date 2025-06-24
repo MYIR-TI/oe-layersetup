@@ -25,7 +25,7 @@ repos:
 
   meta-openembedded:
     url: "https://git.openembedded.org/meta-openembedded"
-    branch: "master"
+    branch: "master-next"
     layers:
       meta-networking:
       meta-python:

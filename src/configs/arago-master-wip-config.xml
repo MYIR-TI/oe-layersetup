@@ -30,7 +30,7 @@
         <repo name='meta-virtualization' url='https://git.yoctoproject.org/meta-virtualization' branch='master' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='meta-openembedded' url='https://git.openembedded.org/meta-openembedded' branch='master-next' commit='HEAD'>
+        <repo name='meta-openembedded' url='https://git.openembedded.org/meta-openembedded' branch='master' commit='HEAD'>
             <layers>
                 <layer>meta-networking</layer>
                 <layer>meta-python</layer>

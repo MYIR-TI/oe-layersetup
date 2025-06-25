@@ -64,7 +64,7 @@
             "uri": "https://git.openembedded.org/meta-openembedded"
           }
         },
-        "rev": "master-next"
+        "rev": "master"
       },
       "path": "meta-openembedded"
     },

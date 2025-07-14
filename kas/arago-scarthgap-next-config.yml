@@ -71,7 +71,7 @@ local_conf_header:
     BRANCH:recipe-cnm-wave-fw_git.bb = "ti-linux-firmware-next"
     BRANCH:recipe-goodix-fw_git.bb = "ti-linux-firmware-next"
     BRANCH:recipe-linux-ti-staging_6.12.bb = "ti-linux-6.12.y-cicd"
-    BRANCH:recipe-linux-ti-staging-rt_6.12.bb = "ti-linux-6.12.y-cicd"
+    BRANCH_ARM64:recipe-linux-ti-staging-rt_6.12.bb = "ti-linux-6.12.y-cicd"
     BRANCH_ARM32:recipe-linux-ti-staging-rt_6.12.bb = "ti-rt-linux-6.12.y-arm32-cicd"
     BRANCH:recipe-prueth-fw_5.6.15.bb = "ti-linux-firmware-next"
     BRANCH:recipe-pruhsr-fw_2.17.25.bb = "ti-linux-firmware-next"

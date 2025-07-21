@@ -35,12 +35,6 @@
                 <layer>meta</layer>
             </layers>
         </repo>
-        <repo name='meta-arago' url='https://git.yoctoproject.org/meta-arago' branch='scarthgap-wip' commit='HEAD'>
-            <layers>
-                <layer>meta-arago-extras</layer>
-                <layer>meta-arago-test</layer>
-            </layers>
-        </repo>
     </repos>
 
     <tools>

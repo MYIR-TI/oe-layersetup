@@ -34,10 +34,3 @@ repos:
     layers:
       meta:
 
-  meta-arago:
-    url: "https://git.yoctoproject.org/meta-arago"
-    branch: "scarthgap-wip"
-    layers:
-      meta-arago-extras:
-      meta-arago-test:
-

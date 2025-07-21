@@ -16,7 +16,5 @@ BBLAYERS ?= " \
     ##OEROOT##/../meta-arm/meta-arm
     ##OEROOT##/../meta-arm/meta-arm-toolchain
     ##OEROOT##/../oe-core/meta
-    ##OEROOT##/../meta-arago/meta-arago-extras
-    ##OEROOT##/../meta-arago/meta-arago-test
     ##OEROOT##/../oe-layersetup
 "

@@ -67,17 +67,6 @@
         "rev": "scarthgap"
       },
       "path": "oe-core"
-    },
-    "meta-arago": {
-      "git-remote": {
-        "remotes": {
-          "origin": {
-            "uri": "https://git.yoctoproject.org/meta-arago"
-          }
-        },
-        "rev": "scarthgap-wip"
-      },
-      "path": "meta-arago"
     }
   },
   "configuration": {

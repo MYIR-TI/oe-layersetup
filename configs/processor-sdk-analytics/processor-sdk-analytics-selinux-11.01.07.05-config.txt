@@ -1,0 +1,22 @@
+# This file takes repo entries in the format
+# repo name,repo uri,repo branch,repo commit[,layers=layer1:layer2...:layern]
+
+bitbake,https://git.openembedded.org/bitbake,2.8,86e7a58c0e9904c33b1b94dddc3d683c2da22d1a
+meta-tisdk,https://github.com/TexasInstruments/meta-tisdk.git,scarthgap,11.01.07.05,layers=meta-ti-foundational
+meta-arago,https://git.yoctoproject.org/meta-arago,scarthgap,11.01.07,layers=meta-arago-distro:meta-arago-extras:meta-arago-test
+meta-selinux,https://git.yoctoproject.org/meta-selinux,scarthgap,30a49ab1298d2a081089a9e4c760a9e02f8100f6,layers=
+meta-qt6,https://code.qt.io/yocto/meta-qt6.git,6.9,2b4e60e319348ae2d53072b901645f30b4cc42bf,layers=
+meta-virtualization,https://git.yoctoproject.org/meta-virtualization,scarthgap,a5449c0c50aa07d02186f548fe6bb6c1ce8823dc,layers=
+meta-openembedded,https://git.openembedded.org/meta-openembedded,scarthgap,e8fd97d86af86cdcc5a6eb3f301cbaf6a2084943,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
+meta-lts-mixins,https://git.yoctoproject.org/meta-lts-mixins,scarthgap/rust,a8046d5ec53b1856169ac795aa87cb0d5db84c04,layers=
+meta-ti,https://git.yoctoproject.org/meta-ti,scarthgap,11.01.07,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
+meta-arm,https://git.yoctoproject.org/meta-arm,scarthgap,8e0f8af90fefb03f08cd2228cde7a89902a6b37c,layers=meta-arm:meta-arm-toolchain
+meta-clang,https://github.com/kraj/meta-clang,scarthgap,aef850f7fa53121c74b244b7ae40d31fb9809ccf,layers=
+oe-core,https://git.openembedded.org/openembedded-core,scarthgap,24c0ab18045920bb5c1e965c0ea6d176fd6de234,layers=meta
+meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,scarthgap,11.01.07.05,layers=
+
+OECORELAYERCONF=./sample-files/bblayers.conf.sample
+OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
+BITBAKE_INCLUSIVE_VARS=yes
+
+LOCALCONF:DISTRO_FEATURES:append = " acl xattr pam selinux"

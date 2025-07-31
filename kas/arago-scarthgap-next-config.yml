@@ -81,6 +81,7 @@ local_conf_header:
     BRANCH:recipe-ti-dm-fw.bb = "ti-linux-firmware-next"
     BRANCH:recipe-ti-eth-fw.bb = "ti-linux-firmware-next"
     BRANCH:recipe-ti-hsm-demo-fw_git.bb = "ti-linux-firmware-next"
+    BRANCH:recipe-ti-pka-fw_git.bb = "ti-linux-firmware-next"
     BRANCH:recipe-ti-rtos-echo-test-fw.bb = "ti-linux-firmware-next"
     BRANCH:recipe-ti-sci-fw_git.bb = "ti-linux-firmware-next"
     BRANCH:recipe-u-boot-ti-staging_2025.01.bb = "ti-u-boot-2025.01-next"

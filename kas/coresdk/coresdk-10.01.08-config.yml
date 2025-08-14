@@ -7,6 +7,13 @@ header:
 target: tisdk-default-image
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.8"
+    commit: "377eba2361850adfb8ce7e761ef9c76be287f88c"
+    layers:
+      .: disabled
+
   meta-arago:
     url: "https://git.yoctoproject.org/meta-arago"
     branch: "scarthgap"

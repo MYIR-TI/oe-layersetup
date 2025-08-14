@@ -7,6 +7,12 @@ header:
 target: 
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.8"
+    layers:
+      .: disabled
+
   meta-ti:
     url: "https://git.yoctoproject.org/meta-ti"
     branch: "scarthgap"

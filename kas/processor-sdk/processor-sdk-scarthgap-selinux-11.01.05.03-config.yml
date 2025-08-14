@@ -7,6 +7,13 @@ header:
 target: tisdk-default-image
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.8"
+    commit: "139f61fe9eec221745184a14b3618d2dfa650b91"
+    layers:
+      .: disabled
+
   meta-tisdk:
     url: "https://github.com/TexasInstruments/meta-tisdk.git"
     branch: "scarthgap"

@@ -7,6 +7,12 @@ header:
 target: tisdk-default-image
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.0"
+    layers:
+      .: disabled
+
   meta-arago:
     url: "https://git.yoctoproject.org/meta-arago"
     branch: "kirkstone-wip"

@@ -7,6 +7,13 @@ header:
 target: tisdk-default-image
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.0"
+    commit: "9993a89e5b97dda5f3657e5a7cc3a4fa94ff7111"
+    layers:
+      .: disabled
+
   meta-processor-sdk:
     url: "https://git.ti.com/git/processor-sdk/meta-processor-sdk.git"
     branch: "kirkstone"

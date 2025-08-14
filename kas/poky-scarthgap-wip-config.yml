@@ -7,6 +7,12 @@ header:
 target: core_image_minimal
 
 repos:
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.8"
+    layers:
+      .: disabled
+
   meta-yocto:
     url: "https://git.yoctoproject.org/meta-yocto"
     branch: "scarthgap"

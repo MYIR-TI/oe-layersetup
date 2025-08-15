@@ -21,7 +21,7 @@
                 <layer>meta-chromium</layer>
             </layers>
         </repo>
-        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='scarthgap' commit='HEAD'>
+        <repo name='meta-selinux' url='https://git.yoctoproject.org/meta-selinux' branch='scarthgap' commit='HEAD' disabled='true'>
             <layers/>
         </repo>
         <repo name='meta-qt6' url='https://code.qt.io/yocto/meta-qt6.git' branch='6.9' commit='HEAD'>
@@ -59,7 +59,7 @@
         <repo name='meta-clang' url='https://github.com/kraj/meta-clang' branch='scarthgap' commit='HEAD'>
             <layers/>
         </repo>
-        <repo name='meta-flutter' url='https://github.com/meta-flutter/meta-flutter.git' branch='scarthgap' commit='HEAD' disabled='true'>
+        <repo name='meta-flutter' url='https://github.com/meta-flutter/meta-flutter.git' branch='scarthgap' commit='HEAD'>
             <layers>
                 <layer>.</layer>
                 <layer>meta-flutter-apps</layer>
@@ -71,10 +71,6 @@
             </layers>
         </repo>
     </repos>
-
-    <local-conf>
-        <line>DISTRO_FEATURES:append = " acl xattr pam selinux"</line>
-    </local-conf>
 
     <tools>
         <tool type='oe-layersetup'>

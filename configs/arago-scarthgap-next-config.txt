@@ -20,6 +20,7 @@ meta-lts-mixins,https://git.yoctoproject.org/meta-lts-mixins,scarthgap/rust,a804
 meta-ti,https://git.yoctoproject.org/meta-ti,scarthgap-next,HEAD,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
 meta-arm,https://git.yoctoproject.org/meta-arm,scarthgap,HEAD,layers=meta-arm:meta-arm-toolchain
 meta-clang,https://github.com/kraj/meta-clang,scarthgap,HEAD,layers=
+#meta-flutter,https://github.com/meta-flutter/meta-flutter.git,scarthgap,HEAD,layers=.:meta-flutter-apps
 oe-core,https://git.openembedded.org/openembedded-core,scarthgap,HEAD,layers=meta
 
 OECORELAYERCONF=./sample-files/bblayers.conf.sample

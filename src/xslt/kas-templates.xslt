@@ -15,8 +15,11 @@ header:
 <xsl:text>  oe-layersetup-bblayers-conf-template: |
 </xsl:text>
 <xsl:for-each select='line'>
+<xsl:variable name='normal-line' select='normalize-space(text())'/>
+<xsl:if test='string-length($normal-line) > 0'>
 <xsl:text>    </xsl:text><xsl:value-of select='text()'/><xsl:text>
 </xsl:text>
+</xsl:if>
 </xsl:for-each>
 <xsl:text>
 </xsl:text>
@@ -28,6 +31,8 @@ header:
 <xsl:text>  oe-layersetup-local-conf-template: |
 </xsl:text>
 <xsl:for-each select='line'>
+<xsl:variable name='normal-line' select='normalize-space(text())'/>
+<xsl:if test='string-length($normal-line) > 0'>
 <xsl:text>    </xsl:text><xsl:value-of select='text()'/><xsl:text>
 </xsl:text>
 </xsl:for-each>

@@ -1,3 +1,4 @@
+---
 header:
   version: 17
   includes:
@@ -46,4 +47,3 @@ repos:
     layers:
       meta-arago-extras:
       meta-arago-test:
-

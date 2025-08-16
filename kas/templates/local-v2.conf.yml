@@ -1,3 +1,4 @@
+---
 header:
   version: 17
 
@@ -5,7 +6,7 @@ local_conf_header:
   oe-layersetup-local-conf-template: |
     # CONF_VERSION is increased each time build/conf/ changes incompatibly
     CONF_VERSION = "2"
-    
+
     #
     # Where to place downloads
     #
@@ -16,7 +17,7 @@ local_conf_header:
     # of subsequent builds. This directory is safe to share between multiple builds
     # on the same machine too.
     DL_DIR = "${TOPDIR}/../downloads"
-    
+
     #
     # Where to place shared-state files
     #
@@ -29,7 +30,7 @@ local_conf_header:
     # If changes were made to the configuration, only shared state files where the
     # state was still valid would be used (done using checksums).
     SSTATE_DIR = "${TOPDIR}/sstate-cache"
-    
+
     #
     # Shared-state files from other locations
     #
@@ -45,7 +46,7 @@ local_conf_header:
     #SSTATE_MIRRORS ?= "\
     #file://.* http://someserver.tld/share/sstate/ \n \
     #file://.* file:///some/local/dir/sstate/"
-    
+
     #
     # Where to place the build output
     #
@@ -54,7 +55,7 @@ local_conf_header:
     # this includes the extraction and compilation of many applications and the toolchain
     # which can use Gigabytes of hard disk space.
     TMPDIR = "${TOPDIR}/build/arago-tmp"
-    
+
     #
     # Machine Selection
     #
@@ -62,7 +63,7 @@ local_conf_header:
     # of emulated machines available which can boot and run in the QEMU emulator:
     #
     #MACHINE ?= "arago"
-    
+
     #
     # Package Management configuration
     #
@@ -76,7 +77,7 @@ local_conf_header:
     # E.g.: PACKAGE_CLASSES ?= "package_rpm package_deb package_ipk"
     # We default to ipk:
     PACKAGE_CLASSES ?= "package_ipk"
-    
+
     #
     # SDK/ADT target architecture
     #
@@ -85,7 +86,7 @@ local_conf_header:
     # running the build on (i.e. building i686 packages on an x86_64 host._
     # Supported values are i686 and x86_64
     SDKMACHINE ?= "i686"
-    
+
     #
     # Extra image configuration defaults
     #
@@ -106,7 +107,7 @@ local_conf_header:
     # meta/classes/image.bbclass and meta/classes/core-image.bbclass for more details.
     # We default to enabling the debugging tweaks.
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
-    
+
     #
     # Additional image features
     #
@@ -119,17 +120,17 @@ local_conf_header:
     # NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
     # NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
     USER_CLASSES ?= "buildstats image-prelink"
-    
+
     # By default disable interactive patch resolution (tasks will just fail instead):
     PATCHRESOLVE = "noop"
-    
+
     # By default the machine configuration file sets the IMAGE_FSTYPES.  But if you
     # would like to add additional file system types you can uncomment the
     # following line and add the additional IMAGE_FSTYPES you want created
     # as part of the build flow.  Some common types are listed below and you
     # can remove the ones you do not want.
     # IMAGE_FSTYPES += "jffs2 cramfs ext2.gz ext3.gz squashfs ubi tar.gz tar.bz2 cpio"
-    
+
     #
     # Parallelism Options
     #
@@ -150,22 +151,21 @@ local_conf_header:
     # so you should not need to set this unless you are wanting to lower the number
     # allowed.
     #
-    
+
     # Select a distribution from supported "arago", "angstrom-2010.x" or "poky"
     # By default, go with the "distroless" configuration, when not set
     #DISTRO   = "arago"
-    
+
     # Set terminal types by default it expects gnome-terminal
     # but we chose xterm
     TERMCMD = "${XTERM_TERMCMD}"
     TERMCMDRUN = "${XTERM_TERMCMDRUN}"
-    
+
     # Don't generate the mirror tarball for SCM repos, the snapshot is enough
     BB_GENERATE_MIRROR_TARBALLS = "0"
-    
+
     # Uncomment this to remove work directory after packaging to save disk space
     #INHERIT += "rm_work"
-    
+
     # Keep one set of images by default
     RM_OLD_IMAGE = "1"
-

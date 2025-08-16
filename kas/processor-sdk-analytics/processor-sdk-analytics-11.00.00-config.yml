@@ -1,3 +1,4 @@
+---
 header:
   version: 17
   includes:
@@ -84,4 +85,3 @@ repos:
     url: "https://git.ti.com/git/edgeai/meta-edgeai.git"
     branch: "scarthgap"
     commit: "81d1b80b2a314814c6d900e82ea2da93eee3f57d"
-

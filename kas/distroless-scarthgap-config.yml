@@ -1,10 +1,9 @@
+---
 header:
   version: 17
   includes:
     - ./templates/bblayers.conf.yml
     - ./templates/local-v2.conf.yml
-
-target: 
 
 repos:
   bitbake:
@@ -32,4 +31,3 @@ repos:
     branch: "scarthgap"
     layers:
       meta:
-

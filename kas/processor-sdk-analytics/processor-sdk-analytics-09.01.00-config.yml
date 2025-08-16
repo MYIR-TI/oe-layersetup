@@ -1,3 +1,4 @@
+---
 header:
   version: 17
   includes:
@@ -77,4 +78,3 @@ repos:
     url: "https://git.ti.com/git/edgeai/meta-edgeai.git"
     branch: "kirkstone"
     commit: "fa42c52098a72461921dd3fb848ff1271bdb7425"
-

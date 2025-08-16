@@ -12,13 +12,13 @@ header:
 <xsl:template match='bblayers-conf-template'>
 <xsl:text>bblayers_conf_header:
 </xsl:text>
-<xsl:text>  oe-layersetup-bblayers-conf-template: |
-</xsl:text>
+<xsl:text>  oe-layersetup-bblayers-conf-template: |</xsl:text>
 <xsl:for-each select='line'>
+<xsl:text>
+</xsl:text>
 <xsl:variable name='normal-line' select='normalize-space(text())'/>
 <xsl:if test='string-length($normal-line) > 0'>
-<xsl:text>    </xsl:text><xsl:value-of select='text()'/><xsl:text>
-</xsl:text>
+<xsl:text>    </xsl:text><xsl:value-of select='text()'/>
 </xsl:if>
 </xsl:for-each>
 <xsl:text>
@@ -28,13 +28,14 @@ header:
 <xsl:template match='local-conf-template'>
 <xsl:text>local_conf_header:
 </xsl:text>
-<xsl:text>  oe-layersetup-local-conf-template: |
-</xsl:text>
+<xsl:text>  oe-layersetup-local-conf-template: |</xsl:text>
 <xsl:for-each select='line'>
+<xsl:text>
+</xsl:text>
 <xsl:variable name='normal-line' select='normalize-space(text())'/>
 <xsl:if test='string-length($normal-line) > 0'>
-<xsl:text>    </xsl:text><xsl:value-of select='text()'/><xsl:text>
-</xsl:text>
+<xsl:text>    </xsl:text><xsl:value-of select='text()'/>
+</xsl:if>
 </xsl:for-each>
 <xsl:apply-templates select='/config/local-conf'/>
 <xsl:text>

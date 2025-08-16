@@ -12,9 +12,9 @@ header:
 </xsl:text>
 <xsl:text>target: </xsl:text><xsl:value-of select='config/targets/default/text()'/><xsl:text>
 </xsl:text>
+<xsl:if test='config/bitbake|config/repos'>
 <xsl:text>
 </xsl:text>
-<xsl:if test='config/bitbake|config/repos'>
 <xsl:call-template name='repos'/>
 </xsl:if>
 <xsl:apply-templates select='config/local-conf'/>
@@ -38,11 +38,11 @@ header:
 </xsl:text>
 <xsl:text>      .: disabled
 </xsl:text>
-<xsl:text>
-</xsl:text>
 </xsl:template>
 
 <xsl:template match='config/repos/repo'>
+<xsl:text>
+</xsl:text>
 <xsl:text>  </xsl:text><xsl:value-of select='@name'/><xsl:text>:
 </xsl:text>
 <xsl:text>    url: "</xsl:text><xsl:value-of select='@url'/><xsl:text>"
@@ -54,8 +54,6 @@ header:
 </xsl:text>
 </xsl:if>
 <xsl:apply-templates select='layers'/>
-<xsl:text>
-</xsl:text>
 </xsl:template>
 
 <xsl:template match='config/repos/repo/layers'>
@@ -79,7 +77,8 @@ header:
 </xsl:template>
 
 <xsl:template match='config/local-conf'>
-<xsl:text>local_conf_header:
+<xsl:text>
+local_conf_header:
   oe-layersetup-local-conf-config-specific: |
 </xsl:text>
 <xsl:for-each select='line'>

@@ -8,16 +8,19 @@ header:
 </xsl:text>
 <xsl:apply-templates select='config/bblayers-conf-template'/>
 <xsl:apply-templates select='config/local-conf-template'/>
-<xsl:text>
-</xsl:text>
-<xsl:text>target: </xsl:text><xsl:value-of select='config/targets/default/text()'/><xsl:text>
-</xsl:text>
+<xsl:apply-templates select='config/targets/default'/>
 <xsl:if test='config/bitbake|config/repos'>
 <xsl:text>
 </xsl:text>
 <xsl:call-template name='repos'/>
 </xsl:if>
 <xsl:apply-templates select='config/local-conf'/>
+</xsl:template>
+
+<xsl:template match='config/targets/default'>
+<xsl:text>
+target: </xsl:text><xsl:value-of select='text()'/><xsl:text>
+</xsl:text>
 </xsl:template>
 
 <xsl:template name='repos'>repos:

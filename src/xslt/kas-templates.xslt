@@ -1,7 +1,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" omit-xml-declaration="yes" indent="no"/>
 
-<xsl:template match="/">header:
+<xsl:template match="/">---
+header:
   version: 17
 
 <xsl:apply-templates select='bblayers-conf-template'/>

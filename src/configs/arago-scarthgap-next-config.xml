@@ -92,6 +92,7 @@
         <line>BRANCH:recipe-ti-hsm-demo-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-pka-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-rtos-echo-test-fw.bb = "ti-linux-firmware-next"</line>
+        <line>BRANCH:recipe-ti-rtos-messageq-test-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-ti-sci-fw_git.bb = "ti-linux-firmware-next"</line>
         <line>BRANCH:recipe-u-boot-ti-staging_2025.01.bb = "ti-u-boot-2025.01-next"</line>
         <line>BRANCH:recipe-vxd-dec-fw_git.bb = "ti-linux-firmware-next"</line>

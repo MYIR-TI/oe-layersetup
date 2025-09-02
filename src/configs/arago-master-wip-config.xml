@@ -16,6 +16,12 @@
                 <layer>meta-arago-test</layer>
             </layers>
         </repo>
+        <repo name='meta-flutter' url='https://github.com/meta-flutter/meta-flutter.git' branch='master' commit='HEAD' disabled='true'>
+            <layers>
+                <layer>.</layer>
+                <layer>meta-flutter-apps</layer>
+            </layers>
+        </repo>
         <repo name='meta-browser' url='https://github.com/OSSystems/meta-browser.git' branch='master' commit='HEAD' disabled='true'>
             <layers>
                 <layer>meta-chromium</layer>

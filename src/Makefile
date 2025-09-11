@@ -10,29 +10,22 @@ TGT_KAS_TEMPLATES = $(patsubst templates/%,../kas/templates/%,$(patsubst %.xml,%
 
 TMP_BITBAKE_SETUP_FLATTENED_CONFIGS = $(subst /,_,$(patsubst configs/%,%,$(SRC_CONFIGS)))
 
-TGT_BITBAKE_SETUP_CONFIGS = $(patsubst %,../bitbake-setup/%,$(patsubst %.xml,%.json,$(TMP_BITBAKE_SETUP_FLATTENED_CONFIGS)))
-TGT_BITBAKE_SETUP_TEMPLATES_BBLAYERS_CONF = $(patsubst %,../conf/templates/%,$(patsubst %.xml,%/bblayers.conf.sample,$(TMP_BITBAKE_SETUP_FLATTENED_CONFIGS)))
-TGT_BITBAKE_SETUP_TEMPLATES_CONF_NOTES = $(patsubst %,../conf/templates/%,$(patsubst %.xml,%/conf-notes.txt,$(TMP_BITBAKE_SETUP_FLATTENED_CONFIGS)))
-TGT_BITBAKE_SETUP_TEMPLATES_CONF_SUMMARY = $(patsubst %,../conf/templates/%,$(patsubst %.xml,%/conf-summary.txt,$(TMP_BITBAKE_SETUP_FLATTENED_CONFIGS)))
-TGT_BITBAKE_SETUP_TEMPLATES_LOCAL_CONF = $(patsubst %,../conf/templates/%,$(patsubst %.xml,%/local.conf.sample,$(TMP_BITBAKE_SETUP_FLATTENED_CONFIGS)))
-TGT_BITBAKE_SETUP_TEMPLATES = $(TGT_BITBAKE_SETUP_TEMPLATES_BBLAYERS_CONF) \
-							  $(TGT_BITBAKE_SETUP_TEMPLATES_CONF_NOTES) \
-							  $(TGT_BITBAKE_SETUP_TEMPLATES_CONF_SUMMARY) \
-							  $(TGT_BITBAKE_SETUP_TEMPLATES_LOCAL_CONF)
-
+TGT_BITBAKE_SETUP_CONFIGS = $(patsubst %,../bitbake-setup/%,$(patsubst %.xml,%.json,$(patsubst configs/%,%,$(SRC_CONFIGS))))
+TGT_BITBAKE_SETUP_CONFIGS_LOCALCONF = $(patsubst %,../conf/fragments/localconf/configs/%,$(patsubst configs/%.xml,%.conf,$(SRC_CONFIGS)))
+TGT_BITBAKE_SETUP_LOCALCONF_TEMPLATES = $(patsubst %,../conf/fragments/localconf/%,$(patsubst templates/%.xml,%,$(filter-out templates/bblayers%,$(SRC_TEMPLATES))))
 TARGETS = $(TGT_OE_LAYERSETUP_CONFIGS) \
 		  $(TGT_OE_LAYERSETUP_TEMPLATES) \
 		  $(TGT_KAS_CONFIGS) \
 		  $(TGT_KAS_TEMPLATES) \
 		  $(TGT_BITBAKE_SETUP_CONFIGS) \
-		  $(TGT_BITBAKE_SETUP_TEMPLATES)
+		  $(TGT_BITBAKE_SETUP_LOCALCONF_TEMPLATES)
 
 all: $(TARGETS)
 
 clean:
 	@echo "  CLEAN ../kas"; rm -rf ../kas
 	@echo "  CLEAN ../bitbake-setup"; rm -rf ../bitbake-setup
-	@echo "  CLEAN ../conf/templates"; rm -rf ../conf/templates
+	@echo "  CLEAN ../conf/fragments"; rm -rf ../conf/fragments
 
 vars:
 	@echo "Source"
@@ -53,7 +46,8 @@ vars:
 	@echo "bitbake-setup"
 	@echo "-------------------------"
 	@echo "TGT_BITBAKE_SETUP_CONFIGS = $(TGT_BITBAKE_SETUP_CONFIGS)"
-	@echo "TGT_BITBAKE_SETUP_TEMPLATES = $(TGT_BITBAKE_SETUP_TEMPLATES)"
+	@echo "TGT_BITBAKE_SETUP_CONFIGS_LOCALCONF = $(TGT_BITBAKE_SETUP_CONFIGS_LOCALCONF)"
+	@echo "TGT_BITBAKE_SETUP_LOCALCONF_TEMPLATES = $(TGT_BITBAKE_SETUP_LOCALCONF_TEMPLATES)"
 	@echo ""
 	@echo "Targets"
 	@echo "-------------------------"
@@ -110,175 +104,48 @@ endef
 define xslt_bitbake_setup =
 	mkdir -p $(@D); \
 	echo "  XLST bitbake-setup $*"; \
-	xsltproc --stringparam arConfigName $$loConfigName --xinclude $^ > $@
+	xsltproc --stringparam arConfigName $$loConfigName --xinclude $^ > $@; \
+	loCheck=`grep local-conf configs/$*.xml`; \
+	if [ "$$loCheck" != "" ]; then \
+		loDir=`dirname ../conf/fragments/localconf/configs/$*.conf`; \
+		mkdir -p $$loDir; \
+		xsltproc --stringparam arConfigName $$loConfigName --xinclude xslt/bitbake-setup-config-localconf.xslt configs/$*.xml > ../conf/fragments/localconf/configs/$*.conf; \
+	fi
 endef
 
 ../bitbake-setup/%.json: xslt/bitbake-setup.xslt configs/%.xml
 	@loConfigName="$*"; \
 	$(xslt_bitbake_setup)
 
-../bitbake-setup/amsdk_%.json: xslt/bitbake-setup.xslt configs/amsdk/%.xml
-	@loConfigName="amsdk_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/coresdk_%.json: xslt/bitbake-setup.xslt configs/coresdk/%.xml
-	@loConfigName="coresdk_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/glsdk_%.json: xslt/bitbake-setup.xslt configs/glsdk/%.xml
-	@loConfigName="glsdk_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/mcsdk_%.json: xslt/bitbake-setup.xslt configs/mcsdk/%.xml
-	@loConfigName="mcsdk_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/processor-sdk_%.json: xslt/bitbake-setup.xslt configs/processor-sdk/%.xml
-	@loConfigName="processor-sdk_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/processor-sdk-analytics_%.json: xslt/bitbake-setup.xslt configs/processor-sdk-analytics/%.xml
-	@loConfigName="processor-sdk-analytics_$*"; \
-	$(xslt_bitbake_setup)
-
-../bitbake-setup/processor-sdk-linux_%.json: xslt/bitbake-setup.xslt configs/processor-sdk-linux/%.xml
-	@loConfigName="processor-sdk-linux_$*"; \
-	$(xslt_bitbake_setup)
+../bitbake-setup/*.json: xslt/bitbake-setup-config-localconf.xslt
+../bitbake-setup/*/*.json: xslt/bitbake-setup-config-localconf.xslt
 
 #------------------------------------------------------------------------------
-# Bitbake-setup templates
+# Bitbake-setup config local-conf
 #------------------------------------------------------------------------------
-define xslt_bitbake_setup_templates =
+define xslt_bitbake_setup_config_localconf =
 	mkdir -p $(@D); \
-	echo "  XLST bitbake-setup-templates $*"; \
-	xsltproc --stringparam arConfigName $$loConfigName --xinclude $^ > $@
+	echo "  XLST bitbake-setup-config-localconf $*"; \
+	xsltproc --stringparam arConfigName $$loConfigName --xinclude $^ > $@; \
+	if [ -s $@ ]; then \
+		echo "remove empty file: $@"; \
+		rm -rf $@; \
+	fi
 endef
 
-../conf/templates/%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/%.xml
+../conf/fragments/localconf/configs/%.conf: xslt/bitbake-setup-config-localconf.xslt configs/%.xml
 	@loConfigName="$*"; \
-	$(xslt_bitbake_setup_templates)
+	$(xslt_bitbake_setup_config_localconf)
 
-../conf/templates/amsdk_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/amsdk/%.xml
-	@loConfigName="amsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
+#------------------------------------------------------------------------------
+# Bitbake localconf templates
+#------------------------------------------------------------------------------
+define bitbake_setup_localconf_templates =
+	mkdir -p $(@D); \
+	echo "  XLST bitbake-setup-localconf-templates $*"; \
+	xsltproc --xinclude $^ > $@
+endef
 
-../conf/templates/coresdk_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/coresdk/%.xml
-	@loConfigName="coresdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/glsdk_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/glsdk/%.xml
-	@loConfigName="glsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/mcsdk_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/mcsdk/%.xml
-	@loConfigName="mcsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/processor-sdk/%.xml
-	@loConfigName="processor-sdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-analytics_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/processor-sdk-analytics/%.xml
-	@loConfigName="processor-sdk-analytics_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-linux_%/bblayers.conf.sample: xslt/bitbake-setup-bblayers-conf.xslt configs/processor-sdk-linux/%.xml
-	@loConfigName="processor-sdk-linux_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/%.xml
-	@loConfigName="$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/amsdk_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/amsdk/%.xml
-	@loConfigName="amsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/coresdk_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/coresdk/%.xml
-	@loConfigName="coresdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/glsdk_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/glsdk/%.xml
-	@loConfigName="glsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/mcsdk_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/mcsdk/%.xml
-	@loConfigName="mcsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/processor-sdk/%.xml
-	@loConfigName="processor-sdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-analytics_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/processor-sdk-analytics/%.xml
-	@loConfigName="processor-sdk-analytics_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-linux_%/conf-notes.txt: xslt/bitbake-setup-conf-notes.xslt configs/processor-sdk-linux/%.xml
-	@loConfigName="processor-sdk-linux_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/%.xml
-	@loConfigName="$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/amsdk_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/amsdk/%.xml
-	@loConfigName="amsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/coresdk_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/coresdk/%.xml
-	@loConfigName="coresdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/glsdk_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/glsdk/%.xml
-	@loConfigName="glsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/mcsdk_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/mcsdk/%.xml
-	@loConfigName="mcsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/processor-sdk/%.xml
-	@loConfigName="processor-sdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-analytics_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/processor-sdk-analytics/%.xml
-	@loConfigName="processor-sdk-analytics_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-linux_%/conf-summary.txt: xslt/bitbake-setup-conf-summary.xslt configs/processor-sdk-linux/%.xml
-	@loConfigName="processor-sdk-linux_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/%.xml
-	@loConfigName="$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/amsdk_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/amsdk/%.xml
-	@loConfigName="amsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/coresdk_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/coresdk/%.xml
-	@loConfigName="coresdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/glsdk_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/glsdk/%.xml
-	@loConfigName="glsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/mcsdk_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/mcsdk/%.xml
-	@loConfigName="mcsdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/processor-sdk/%.xml
-	@loConfigName="processor-sdk_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-analytics_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/processor-sdk-analytics/%.xml
-	@loConfigName="processor-sdk-analytics_$*"; \
-	$(xslt_bitbake_setup_templates)
-
-../conf/templates/processor-sdk-linux_%/local.conf.sample: xslt/bitbake-setup-local-conf.xslt configs/processor-sdk-linux/%.xml
-	@loConfigName="processor-sdk-linux_$*"; \
-	$(xslt_bitbake_setup_templates)
+../conf/fragments/localconf/%: xslt/bitbake-setup-localconf-templates.xslt templates/%.xml
+	@$(bitbake_setup_localconf_templates)
 

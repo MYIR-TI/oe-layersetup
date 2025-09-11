@@ -1,8 +1,0 @@
-<targets>
-    <default>tisdk-default-image</default>
-    <target>tisdk-base-image</target>
-    <target>tisdk-bootstrap-base-image</target>
-    <target>tisdk-bootstrap-image</target>
-    <target>tisdk-thinlinux-image</target>
-    <target>tisdk-tiny-image</target>
-</targets>

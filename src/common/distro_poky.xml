@@ -1,0 +1,9 @@
+<distro name='poky'>
+    <description>Yocto Project Poky reference distro build</description>
+    <configs>
+        <config>poky</config>
+    </configs>
+    <targets>
+        <default>core_image_minimal</default>
+    </targets>
+</distro>

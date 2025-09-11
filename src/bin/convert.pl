@@ -360,9 +360,13 @@ sub convert_config
     {
         print XML "    <xi:include href='${loRelSrcDir}/common/motd_cicd.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";
     }
-    if (-f "${glSrcDir}/common/targets_${loDistro}.xml")
+    if (-f "${glSrcDir}/common/distro_${loDistro}.xml")
     {
-        print XML "    <xi:include href='${loRelSrcDir}/common/targets_${loDistro}.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";
+        print XML "    <xi:include href='${loRelSrcDir}/common/distro_${loDistro}.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";
+    }
+    if (-f "${glSrcDir}/common/machines.xml")
+    {
+        print XML "    <xi:include href='${loRelSrcDir}/common/machines.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";
     }
     print XML "    <xi:include href='${loRelSrcDir}/templates/${loLayerConfTemplate}' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";
     print XML "    <xi:include href='${loRelSrcDir}/templates/${loLocalConfTemplate}' xmlns:xi='http://www.w3.org/2001/XInclude'/>\n";

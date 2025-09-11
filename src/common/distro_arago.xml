@@ -1,0 +1,14 @@
+<distro name='arago'>
+    <description>TI Arago distro build</description>
+    <configs>
+        <config>arago</config>
+    </configs>
+    <targets>
+        <default>tisdk-default-image</default>
+        <target>tisdk-base-image</target>
+        <target>tisdk-bootstrap-base-image</target>
+        <target>tisdk-bootstrap-image</target>
+        <target>tisdk-thinlinux-image</target>
+        <target>tisdk-tiny-image</target>
+    </targets>
+</distro>

@@ -167,27 +167,3 @@
     ]
   }
 }
-{
-  "version": "1.0",
-  "description": "",
-  "bitbake-setup": {
-    "configurations": [
-      {
-        "name": "",
-        "description": "",
-        "bb-layers": [  ],
-        "oe-fragments": [ "oe-layersetup/localconf/" ],
-        "oe-fragments-one-of": {
-          "machine": {
-            "description": "Available target machines",
-            "options": [  ]
-          },
-          "distro": {
-            "description": "Available distributions",
-            "options": [  ]
-          }
-        }
-      }
-    ]
-  }
-}

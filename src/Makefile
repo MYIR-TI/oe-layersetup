@@ -104,17 +104,18 @@ endef
 define xslt_bitbake_setup =
 	mkdir -p $(@D); \
 	echo "  XLST bitbake-setup $*"; \
-	xsltproc --stringparam arConfigName $$loConfigName --xinclude $^ > $@; \
+	xsltproc --stringparam arConfigName $$loConfigName --xinclude xslt/bitbake-setup.xslt configs/$*.xml > $@; \
 	loCheck=`grep local-conf configs/$*.xml`; \
 	if [ "$$loCheck" != "" ]; then \
 		loDir=`dirname ../conf/fragments/localconf/configs/$*.conf`; \
 		mkdir -p $$loDir; \
+		echo "  XLST bitbake-setup-config-localconf $*"; \
 		xsltproc --stringparam arConfigName $$loConfigName --xinclude xslt/bitbake-setup-config-localconf.xslt configs/$*.xml > ../conf/fragments/localconf/configs/$*.conf; \
 	fi
 endef
 
 ../bitbake-setup/%.json: xslt/bitbake-setup.xslt configs/%.xml
-	@loConfigName="$*"; \
+	loConfigName="$*"; \
 	$(xslt_bitbake_setup)
 
 ../bitbake-setup/*.json: xslt/bitbake-setup-config-localconf.xslt

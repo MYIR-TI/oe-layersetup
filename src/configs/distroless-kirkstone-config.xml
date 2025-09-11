@@ -2,6 +2,7 @@
 <config>
     <description>Distroless reference for kirkstone</description>
 
+    <xi:include href='../common/machines.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/bblayers.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/local-v2.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
 

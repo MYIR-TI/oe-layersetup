@@ -2,7 +2,8 @@
 <config>
     <description>Poky reference distribution for master</description>
 
-    <xi:include href='../common/targets_poky.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../common/distro_poky.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../common/machines.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/bblayers.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/local-poky-v3.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
 

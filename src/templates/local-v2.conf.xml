@@ -1,4 +1,6 @@
 <local-conf-template name='local-v2.conf'>
+    <summary>TI oe-layersetup build defaults for builds v2</summary>
+    <description>TI oe-layersetup build defaults for builds v2</description>
     <line># CONF_VERSION is increased each time build/conf/ changes incompatibly</line>
     <line>CONF_VERSION = "2"</line>
     <line></line>

@@ -3,7 +3,8 @@
     <description>Arago reference distribution for master-next (CICD)</description>
 
     <xi:include href='../common/motd_cicd.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
-    <xi:include href='../common/targets_arago.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../common/distro_arago.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+    <xi:include href='../common/machines.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/bblayers.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
     <xi:include href='../templates/local-arago64-v3.conf.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
 

@@ -1,1 +1,0 @@
-TI CoreSDK v10.01.10-selinux

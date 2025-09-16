@@ -10,7 +10,7 @@ TGT_KAS_TEMPLATES = $(patsubst templates/%,../kas/templates/%,$(patsubst %.xml,%
 
 TMP_BITBAKE_SETUP_FLATTENED_CONFIGS = $(subst /,_,$(patsubst configs/%,%,$(SRC_CONFIGS)))
 
-TGT_BITBAKE_SETUP_CONFIGS = $(patsubst %,../bitbake-setup/%,$(patsubst %.xml,%.json,$(patsubst configs/%,%,$(SRC_CONFIGS))))
+TGT_BITBAKE_SETUP_CONFIGS = $(patsubst %,../bitbake-setup/%,$(patsubst %.xml,%.conf.json,$(patsubst configs/%,%,$(SRC_CONFIGS))))
 TGT_BITBAKE_SETUP_CONFIGS_LOCALCONF = $(patsubst %,../conf/fragments/localconf/configs/%,$(patsubst configs/%.xml,%.conf,$(SRC_CONFIGS)))
 TGT_BITBAKE_SETUP_LOCALCONF_TEMPLATES = $(patsubst %,../conf/fragments/localconf/%,$(patsubst templates/%.xml,%,$(filter-out templates/bblayers%,$(SRC_TEMPLATES))))
 TARGETS = $(TGT_OE_LAYERSETUP_CONFIGS) \
@@ -99,7 +99,7 @@ endef
 	@$(xslt_kas_templates)
 
 #------------------------------------------------------------------------------
-# Bitbake-setup config.json
+# Bitbake-setup config.conf.json
 #------------------------------------------------------------------------------
 define xslt_bitbake_setup =
 	mkdir -p $(@D); \
@@ -114,12 +114,12 @@ define xslt_bitbake_setup =
 	fi
 endef
 
-../bitbake-setup/%.json: xslt/bitbake-setup.xslt configs/%.xml
-	loConfigName="$*"; \
+../bitbake-setup/%.conf.json: xslt/bitbake-setup.xslt configs/%.xml
+	@loConfigName="$*"; \
 	$(xslt_bitbake_setup)
 
-../bitbake-setup/*.json: xslt/bitbake-setup-config-localconf.xslt
-../bitbake-setup/*/*.json: xslt/bitbake-setup-config-localconf.xslt
+../bitbake-setup/*.conf.json: xslt/bitbake-setup-config-localconf.xslt
+../bitbake-setup/*/*.conf.json: xslt/bitbake-setup-config-localconf.xslt
 
 #------------------------------------------------------------------------------
 # Bitbake-setup config local-conf

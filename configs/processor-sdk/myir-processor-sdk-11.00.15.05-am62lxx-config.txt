@@ -8,7 +8,7 @@ meta-arago,https://github.com/MYIR-TI/meta-arago,develop-ym62lx-V11.00.15.05,087
 meta-virtualization,https://github.com/MYIR-TI/meta-virtualization,scarthgap,9e040ee8dd6025558ea60ac9db60c41bfeddf221,layers=
 meta-openembedded,https://github.com/MYIR-TI/meta-openembedded,scarthgap,491671faee11ea131feab5a3a451d1a01deb2ab1,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 meta-qt6,https://github.com/MYIR-TI/meta-qt6.git,develop-qt6.6.3,8dee95ba05873daa70bbf52993aeba7342496cac,layers=
-meta-myir,https://github.com/MYIR-TI/meta-myir,develop-ym62lx-V11.00.15.05,a3a8df27408ae28fb80dc51291c0f08e71a0f05c,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
+meta-myir,https://github.com/MYIR-TI/meta-myir,develop-ym62lx-V11.00.15.05,023fd22e3548cecbce1c7845544253c697872283,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
 meta-clang,https://github.com/MYIR-TI/meta-clang,scarthgap,eaa08939eaec9f620b14742ff3ac568553683034,layers=
 oe-core,https://github.com/MYIR-TI/openembedded-core,scarthgap,29d920f4c2249df7a69f00100924b4525e03c0d9,layers=meta
 

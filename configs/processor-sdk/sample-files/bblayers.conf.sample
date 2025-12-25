@@ -1,0 +1,33 @@
+LCONF_VERSION = "7"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+# Layers configured by oe-core-setup script (MYIR AM62 SDK)
+BBLAYERS += " \
+    ${TOPDIR}/../sources/meta-tisdk/meta-ti-foundational \
+    ${TOPDIR}/../sources/meta-tisdk/meta-ti-ml \
+    ${TOPDIR}/../sources/meta-arago/meta-arago-distro \
+    ${TOPDIR}/../sources/meta-arago/meta-arago-extras \
+    ${TOPDIR}/../sources/meta-arago/meta-arago-test \
+    ${TOPDIR}/../sources/meta-qt6 \
+    ${TOPDIR}/../sources/meta-virtualization \
+    ${TOPDIR}/../sources/meta-openembedded/meta-networking \
+    ${TOPDIR}/../sources/meta-openembedded/meta-python \
+    ${TOPDIR}/../sources/meta-openembedded/meta-oe \
+    ${TOPDIR}/../sources/meta-openembedded/meta-gnome \
+    ${TOPDIR}/../sources/meta-openembedded/meta-filesystems \
+    ${TOPDIR}/../sources/meta-openembedded/meta-multimedia \
+    ${TOPDIR}/../sources/meta-lts-mixins \
+    ${TOPDIR}/../sources/meta-ti/meta-ti-extras \
+    ${TOPDIR}/../sources/meta-ti/meta-beagle \
+    ${TOPDIR}/../sources/meta-ti/meta-ti-bsp \
+    ${TOPDIR}/../sources/meta-arm/meta-arm \
+    ${TOPDIR}/../sources/meta-arm/meta-arm-toolchain \
+    ${TOPDIR}/../sources/meta-clang \
+    ${TOPDIR}/../sources/meta-myir/meta-myir-bsp \
+    ${TOPDIR}/../sources/meta-myir/meta-myir-extras \
+    ${TOPDIR}/../sources/oe-core/meta \
+"
+
+

@@ -1,0 +1,60 @@
+# Based on local-arago64-v2.conf.sample, customized for MYIR AM62X
+CONF_VERSION = "2"
+
+#
+# Where to place downloads
+#
+DL_DIR = "${TOPDIR}/../downloads"
+
+#
+# Where to place shared-state files
+#
+SSTATE_DIR = "${TOPDIR}/sstate-cache"
+
+#
+# Where to place the build output
+#
+TMPDIR = "${TOPDIR}/arago-tmp"
+
+#
+# Machine / Distro selection for MYIR AM62X
+#
+MACHINE ?= "myd-am62x"
+DISTRO  ?= "arago"
+
+#
+# Package Management configuration
+#
+PACKAGE_CLASSES ?= "package_ipk"
+
+#
+# SDK/ADT target architecture
+#
+SDKMACHINE ?= "x86_64"
+
+#
+# Extra image configuration defaults
+#
+EXTRA_IMAGE_FEATURES = "debug-tweaks"
+
+#
+# Additional image features
+#
+USER_CLASSES ?= "buildstats"
+
+# By default disable interactive patch resolution (tasks will just fail instead):
+PATCHRESOLVE = "noop"
+
+# DISTRO defaults and misc settings copied from local-arago64-v2.conf.sample
+DISTRO   = "arago"
+TERMCMD = "${XTERM_TERMCMD}"
+TERMCMDRUN = "${XTERM_TERMCMDRUN}"
+BB_GENERATE_MIRROR_TARBALLS = "0"
+RM_OLD_IMAGE = "1"
+PRSERV_HOST = "localhost:0"
+BB_SIGNATURE_HANDLER = "OEEquivHash"
+BB_HASHSERVE = "auto"
+INHERIT += "buildhistory"
+BUILDHISTORY_COMMIT = "1"
+
+

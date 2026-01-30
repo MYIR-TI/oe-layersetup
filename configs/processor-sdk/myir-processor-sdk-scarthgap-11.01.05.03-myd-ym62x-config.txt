@@ -4,15 +4,15 @@
 bitbake,https://github.com/MYIR-TI/ti-bitbake.git,develop_ym62x_V11.01.05.03,139f61fe9eec221745184a14b3618d2dfa650b91
 meta-tisdk,https://github.com/MYIR-TI/meta-tisdk.git,develop_ym62x_V11.01.05.03,118441fda5442d0d208d6532659555e1e5fa8499,layers=meta-ti-foundational:meta-ti-ml
 meta-arago,https://github.com/MYIR-TI/meta-arago.git,develop_ym62x_V11.01.05.03,0a8ae569979d02afbcc8b893358da6ab4c7d2354,layers=meta-arago-distro:meta-arago-extras:meta-arago-test
-meta-qt6,https://github.com/MYIR-TI/meta-qt6.git,develop_ym62x_V11.01.05.03,18bda8b8a5cf03ad16ed3c52b110b63b98b8ed77,layers=
+meta-qt6,https://github.com/MYIR-TI/meta-qt6.git,develop_ym62x_V11.01.05.03,0a60bead39bd003e06c87f2a4a5998bf9d76a741,layers=
 meta-virtualization,https://github.com/MYIR-TI/meta-virtualization.git,develop_ym62x_V11.01.05.03,9e040ee8dd6025558ea60ac9db60c41bfeddf221,layers=
 meta-openembedded,https://github.com/MYIR-TI/meta-openembedded.git,develop_ym62x_V11.01.05.03,491671faee11ea131feab5a3a451d1a01deb2ab1,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 meta-ti,https://github.com/MYIR-TI/meta-ti.git,develop_ym62x_V11.01.05,59354be6c2362b9f7d0a3cd2c017f2f3c6ab7f2e,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
 meta-lts-mixins,https://github.com/MYIR-TI/meta-lts-mixins.git,develop_ym62x_V11.01.05.03,a8046d5ec53b1856169ac795aa87cb0d5db84c04,layers=
-meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_ym62x_V11.01.05.03,baa70b3def69d3793eb3271fcce028b7991a0a30,layers=meta-myir-bsp:meta-myir-extras
+meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_ym62x_V11.01.05.03,e7468a5ecac1b10bf1bcf0e92a4074b2bc4061ff,layers=meta-myir-bsp:meta-myir-extras
 meta-arm,https://github.com/MYIR-TI/meta-arm.git,develop_ym62x_V11.01.05.03,8e0f8af90fefb03f08cd2228cde7a89902a6b37c,layers=meta-arm:meta-arm-toolchain
 meta-clang,https://github.com/MYIR-TI/meta-clang.git,develop_ym62x_V11.01.05.03,eea5ec23155cfd47781599fdc9a92c21e4caffc8,layers=
-oe-core,https://github.com/MYIR-TI/oe-core.git,develop_ym62x_V11.01.05.03,3914e2e13bfd7b79ba02c9ad4a03c25e828e571a,layers=meta
+oe-core,https://github.com/MYIR-TI/oe-core.git,develop_ym62x_V11.01.05.03,85beed9fce52d54613a4be23b4c94c8d34adb770,layers=meta
 
 OECORELAYERCONF=sample-files/bblayers-myir-am62x.conf.sample
 OECORELOCALCONF=sample-files/local-myir-am62x.conf.sample

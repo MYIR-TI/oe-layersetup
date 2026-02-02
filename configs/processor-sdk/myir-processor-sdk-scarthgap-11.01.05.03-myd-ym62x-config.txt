@@ -9,7 +9,7 @@ meta-virtualization,https://github.com/MYIR-TI/meta-virtualization.git,develop_y
 meta-openembedded,https://github.com/MYIR-TI/meta-openembedded.git,develop_ym62x_V11.01.05.03,491671faee11ea131feab5a3a451d1a01deb2ab1,layers=meta-networking:meta-python:meta-oe:meta-gnome:meta-filesystems:meta-multimedia
 meta-ti,https://github.com/MYIR-TI/meta-ti.git,develop_ym62x_V11.01.05,59354be6c2362b9f7d0a3cd2c017f2f3c6ab7f2e,layers=meta-ti-extras:meta-beagle:meta-ti-bsp
 meta-lts-mixins,https://github.com/MYIR-TI/meta-lts-mixins.git,develop_ym62x_V11.01.05.03,a8046d5ec53b1856169ac795aa87cb0d5db84c04,layers=
-meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_ym62x_V11.01.05.03,e7468a5ecac1b10bf1bcf0e92a4074b2bc4061ff,layers=meta-myir-bsp:meta-myir-extras
+meta-myir,https://github.com/MYIR-TI/meta-myir.git,develop_ym62x_V11.01.05.03,06dcfcbb1df3f84237b87a2139b384ff4b7d74f0,layers=meta-myir-bsp:meta-myir-extras
 meta-arm,https://github.com/MYIR-TI/meta-arm.git,develop_ym62x_V11.01.05.03,8e0f8af90fefb03f08cd2228cde7a89902a6b37c,layers=meta-arm:meta-arm-toolchain
 meta-clang,https://github.com/MYIR-TI/meta-clang.git,develop_ym62x_V11.01.05.03,eea5ec23155cfd47781599fdc9a92c21e4caffc8,layers=
 oe-core,https://github.com/MYIR-TI/oe-core.git,develop_ym62x_V11.01.05.03,85beed9fce52d54613a4be23b4c94c8d34adb770,layers=meta

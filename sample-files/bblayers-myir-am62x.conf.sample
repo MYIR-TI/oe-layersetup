@@ -5,10 +5,4 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS += " \
-    ${TOPDIR}/../sources/meta-qt6 \
-    ${TOPDIR}/../sources/meta-virtualization \
-    ${TOPDIR}/../sources/meta-lts-mixins \
-    ${TOPDIR}/../sources/meta-clang \
-    ${TOPDIR}/../sources/meta-myir/meta-myir-bsp \
-    ${TOPDIR}/../sources/meta-myir/meta-myir-extras \
 "
